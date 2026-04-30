@@ -1,6 +1,6 @@
 "use client";
 
-import { whatsappUrl, WHATSAPP_DISPLAY } from "@/content/contact";
+import { WHATSAPP_PHONE_E164 } from "@/content/contact";
 
 function MessageIcon() {
   return (
@@ -20,19 +20,22 @@ function MessageIcon() {
 }
 
 export function WhatsAppFloatingButton() {
+  const text = encodeURIComponent("Hi Khoa Rentals — I’d like to check availability.");
+  const href = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE_E164}&text=${text}`;
+
   return (
     <a
-      href={whatsappUrl("Hi KHOA Rentals — I’d like to check availability.")}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group fixed right-4 top-1/2 z-[100] -translate-y-1/2 border border-black/15 bg-black text-[var(--background)] shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 max-sm:bottom-5 max-sm:top-auto max-sm:-translate-y-0"
-      aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
+      className="group fixed right-4 top-1/2 z-[1000] -translate-y-1/2 border border-black/15 bg-black text-[var(--background)] shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 pointer-events-auto max-sm:bottom-5 max-sm:top-auto max-sm:-translate-y-0"
+      aria-label="Message"
     >
       <span className="grid h-12 w-12 place-items-center">
         <MessageIcon />
       </span>
       <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap border border-black/10 bg-[var(--background)] px-3 py-2 text-xs font-medium text-[var(--foreground)] shadow-[0_10px_30px_rgba(0,0,0,0.10)] group-hover:block">
-        Message on WhatsApp
+        Message
       </span>
     </a>
   );

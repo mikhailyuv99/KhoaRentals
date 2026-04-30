@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export function HeroBackdrop({ src, alt }: { src: string; alt: string }) {
@@ -31,13 +30,12 @@ export function HeroBackdrop({ src, alt }: { src: string; alt: string }) {
           willChange: "transform",
         }}
       >
-        <Image
+        <img
           src={src}
           alt={alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          loading="eager"
+          className="h-full w-full object-cover"
+          referrerPolicy="no-referrer"
         />
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,239,230,0.68),rgba(244,239,230,0.58),rgba(244,239,230,0.86))]" />

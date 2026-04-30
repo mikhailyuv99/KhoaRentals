@@ -31,28 +31,34 @@ export function PropertyImageStrip({ images }: { images: Img[] }) {
         <div className="text-xs text-black/55">{safe.length} images • scroll →</div>
       </div>
 
-      <div
-        ref={scrollerRef}
-        className={cn(
-          "mt-3 flex gap-4 overflow-x-auto border border-black/10 bg-[var(--background)] p-3",
-          "snap-x snap-mandatory scroll-px-3",
-          "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        )}
-      >
-        {safe.map((img) => (
-          <div
-            key={img.src}
-            className="relative h-[340px] w-[min(86vw,720px)] shrink-0 snap-start border border-black/10 bg-black/5"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              sizes="(max-width: 768px) 86vw, 720px"
-              className="object-cover"
-            />
-          </div>
-        ))}
+      <div className="relative mt-3">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[var(--background)] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[var(--background)] to-transparent" />
+
+        <div
+          ref={scrollerRef}
+          className={cn(
+            "flex gap-4 overflow-x-auto border border-black/10 bg-[var(--background)] p-3",
+            "snap-x snap-mandatory scroll-px-3",
+            "cursor-grab active:cursor-grabbing",
+            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          )}
+        >
+          {safe.map((img) => (
+            <div
+              key={img.src}
+              className="relative h-[340px] w-[min(86vw,720px)] shrink-0 snap-start border border-black/10 bg-black/5"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 86vw, 720px"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
