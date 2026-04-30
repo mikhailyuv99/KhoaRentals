@@ -157,7 +157,7 @@ function ListingExpanded({ listing }: { listing: Listing }) {
   );
 
   return (
-    <div className="mt-8 overflow-hidden rounded-[24px] border border-[color:var(--ui3)] bg-white">
+    <div className="overflow-hidden rounded-[24px] border border-[color:var(--ui3)] bg-white">
       <div className="flex flex-col gap-3 border-b border-[color:var(--ui3)] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <div className="font-display truncate text-[22px] tracking-tight text-[color:var(--text)]">{listing.title}</div>
@@ -283,7 +283,9 @@ export function ListingsExplorer({
         style={{ maxHeight: selected ? expandedMaxHeight : 0, overflow: "hidden" }}
         aria-hidden={!selected}
       >
-        <div ref={expandedContentRef}>{selected ? <ListingExpanded listing={selected} /> : null}</div>
+        <div ref={expandedContentRef} className="pt-8">
+          {selected ? <ListingExpanded listing={selected} /> : null}
+        </div>
       </div>
     </div>
   );

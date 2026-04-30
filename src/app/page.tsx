@@ -3,6 +3,7 @@ import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { ListingsExplorer } from "@/components/ListingsExplorer";
 import { AccordionItem } from "@/components/Accordion";
+import { Reveal } from "@/components/Reveal";
 
 export default function Home() {
   return (
@@ -23,9 +24,10 @@ export default function Home() {
 
           <Container className="relative max-w-[1440px] px-10">
             <div className="flex min-h-[86vh] flex-col justify-end pb-16 pt-32">
-              <div className="max-w-[840px]">
+              <div className="max-w-[840px] page-in">
                 <h1 className="font-display text-[56px] leading-[1.05] tracking-[-0.02em] text-white sm:text-[68px] md:text-[76px]">
-                  Discover the perfect place to call home in Da Nang
+                  Discover the perfect place to call home in{" "}
+                  <span className="hero-loop">Da Nang</span>
                 </h1>
                 <p className="mt-5 max-w-[560px] text-[18px] leading-[1.6] text-white/85">
                   Your trusted rental agent for monthly homes in Da Nang, offering curated places across budgets.
@@ -46,19 +48,21 @@ export default function Home() {
 
       <section id="listings">
         <Container className="max-w-[1300px] px-10 pb-[100px] pt-[140px]">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <div className="inline-flex rounded-full border border-[color:var(--ui3)] bg-white px-4 py-2 text-[14px] font-medium text-[color:var(--text2)]">
-                Listings
+          <Reveal>
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <div className="inline-flex rounded-full border border-[color:var(--ui3)] bg-white px-4 py-2 text-[14px] font-medium text-[color:var(--text2)]">
+                  Listings
+                </div>
+                <h2 className="font-display mt-6 max-w-[680px] text-[44px] leading-[1.1] tracking-[-0.01em] text-[color:var(--text)] sm:text-[48px]">
+                  Handpicked monthly rentals across Da Nang
+                </h2>
               </div>
-              <h2 className="font-display mt-6 max-w-[680px] text-[44px] leading-[1.1] tracking-[-0.01em] text-[color:var(--text)] sm:text-[48px]">
-                Handpicked monthly rentals across Da Nang
-              </h2>
+              <Button href="/listings" variant="secondary">
+                View all
+              </Button>
             </div>
-            <Button href="/listings" variant="secondary">
-              View all
-            </Button>
-          </div>
+          </Reveal>
 
           <div className="mt-12">
             <ListingsExplorer initialLimit={6} />
@@ -68,7 +72,8 @@ export default function Home() {
 
       <section className="border-y border-[color:var(--ui3)] bg-[color:var(--ui2)] py-[100px]">
         <Container className="max-w-[1220px] px-10">
-          <div className="grid gap-[42px] lg:grid-cols-12">
+          <Reveal>
+            <div className="grid gap-[42px] lg:grid-cols-12">
             <div className="lg:col-span-5">
               <div className="inline-flex rounded-full border border-[color:var(--ui3)] bg-white px-4 py-2 text-[14px] font-medium text-[color:var(--text2)]">
                 FAQs
@@ -101,7 +106,8 @@ export default function Home() {
                 </AccordionItem>
               </div>
             </div>
-          </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </>

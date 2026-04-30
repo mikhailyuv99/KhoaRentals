@@ -7,10 +7,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
       // close to Framer SmoothScroll "intensity"
-      lerp: 0.08,
+      lerp: 0.065,
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.0,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2,
     });
 
     let raf = 0;
