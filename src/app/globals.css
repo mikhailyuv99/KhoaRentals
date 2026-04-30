@@ -1,27 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4efe6;
-  --foreground: #151515;
+  --bg: #f4efe6;
+  --fg: #151515;
+  --muted: rgba(0, 0, 0, 0.55);
+  --muted2: rgba(0, 0, 0, 0.35);
+  --border: rgba(0, 0, 0, 0.12);
+  --border2: rgba(0, 0, 0, 0.08);
+  --surface: rgba(255, 255, 255, 0.28);
+  --surface2: rgba(255, 255, 255, 0.12);
+  --ink: #0b0b0b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f4efe6;
-    --foreground: #151515;
+    --bg: #f4efe6;
+    --fg: #151515;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-body), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
@@ -52,10 +59,27 @@ body > * {
   z-index: 1;
 }
 
+a {
+  text-underline-offset: 3px;
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.18);
+}
+
 @layer utilities {
   .font-display {
     font-family: var(--font-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     letter-spacing: -0.02em;
+  }
+
+  .u-border {
+    border: 1px solid var(--border);
+  }
+
+  .u-border2 {
+    border: 1px solid var(--border2);
   }
 }
 

@@ -23,7 +23,7 @@ export const dynamicParams = true;
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-black/10 bg-[var(--background)] p-4">
+    <div className="u-border bg-[var(--surface)] p-4 backdrop-blur">
       <div className="text-xs text-black/55">{label}</div>
       <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">{value}</div>
     </div>
@@ -46,12 +46,12 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
   );
 
   return (
-    <main className="bg-[var(--background)]">
+    <main className="bg-[var(--bg)]">
       <Container className="py-10 sm:py-14">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <Link href="/properties" className="text-sm text-black/60 hover:text-black">
+              <Link href="/properties" className="text-sm text-black/60 hover:text-black underline decoration-black/15 hover:decoration-black/30">
                 ← Back to properties
               </Link>
               <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
@@ -65,7 +65,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 border border-black/10 bg-[var(--background)] p-5 sm:flex-row sm:items-center sm:justify-between md:min-w-[360px]">
+            <div className="flex flex-col gap-2 u-border bg-[var(--surface)] p-5 backdrop-blur sm:flex-row sm:items-center sm:justify-between md:min-w-[360px]">
               <div>
                 <div className="text-xs text-black/55">Monthly rent</div>
                 <div className="mt-1 text-2xl font-semibold tracking-tight text-[var(--foreground)]">
@@ -125,13 +125,13 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   <Stat label="Size" value={property.sizeSqm ? `${property.sizeSqm} m²` : "—"} />
                 </div>
 
-                <div className="border border-black/10 bg-[var(--background)] p-5">
+                <div className="u-border bg-[var(--surface)] p-5 backdrop-blur">
                   <div className="text-sm font-semibold text-[var(--foreground)]">Address</div>
                   <div className="mt-2 text-sm leading-6 text-black/60">
                     {property.addressLine}
                   </div>
 
-                  <div className="mt-4 overflow-hidden border border-black/10 bg-black/5">
+                  <div className="mt-4 overflow-hidden u-border2 bg-black/5">
                     <iframe
                       title={`Map: ${property.name}`}
                       src={mapsEmbedUrl(property.map.lat, property.map.lng)}
@@ -151,13 +151,13 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   </div>
                 </div>
 
-                <div className="border border-black/10 bg-[var(--background)] p-5">
+                <div className="u-border bg-[var(--surface)] p-5 backdrop-blur">
                   <div className="text-sm font-semibold text-[var(--foreground)]">Amenities</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {property.amenities.map((a) => (
                       <span
                         key={a}
-                        className="border border-black/10 bg-black/0 px-3 py-1 text-xs text-black/65"
+                        className="u-border2 bg-[var(--bg)] px-3 py-1 text-xs text-black/70"
                       >
                         {a}
                       </span>

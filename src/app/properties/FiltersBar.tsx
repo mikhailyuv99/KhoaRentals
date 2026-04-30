@@ -38,7 +38,7 @@ export function FiltersBar() {
 
   return (
     <form
-      className="mt-8 grid gap-3 border border-black/10 bg-[var(--background)] p-4 md:grid-cols-12 md:items-end"
+      className="mt-8 grid gap-3 u-border bg-[var(--surface)] p-4 backdrop-blur md:grid-cols-12 md:items-end"
       onSubmit={(e) => {
         e.preventDefault();
         router.push(buildUrl(state));
@@ -50,7 +50,7 @@ export function FiltersBar() {
           value={state.q}
           onChange={(e) => setState((p) => ({ ...p, q: e.target.value }))}
           placeholder='e.g. "studio", "My Khe", "Son Tra", "2 bedroom"'
-          className="h-11 border border-black/15 bg-[var(--background)] px-3 text-sm outline-none focus:border-black/30"
+          className="h-11 u-border2 bg-[var(--bg)] px-3 text-sm outline-none focus:border-black/30"
         />
       </label>
 
@@ -59,7 +59,7 @@ export function FiltersBar() {
         <select
           value={state.beds}
           onChange={(e) => setState((p) => ({ ...p, beds: e.target.value }))}
-          className="h-11 border border-black/15 bg-[var(--background)] px-2 text-sm outline-none focus:border-black/30"
+          className="h-11 u-border2 bg-[var(--bg)] px-2 text-sm outline-none focus:border-black/30"
         >
           <option value="">Any</option>
           <option value="0">Studio</option>
@@ -76,7 +76,7 @@ export function FiltersBar() {
           onChange={(e) => setState((p) => ({ ...p, min: e.target.value }))}
           inputMode="numeric"
           placeholder="0"
-          className="h-11 border border-black/15 bg-[var(--background)] px-3 text-sm outline-none focus:border-black/30"
+          className="h-11 u-border2 bg-[var(--bg)] px-3 text-sm outline-none focus:border-black/30"
         />
       </label>
 
@@ -87,7 +87,7 @@ export function FiltersBar() {
           onChange={(e) => setState((p) => ({ ...p, max: e.target.value }))}
           inputMode="numeric"
           placeholder="500"
-          className="h-11 border border-black/15 bg-[var(--background)] px-3 text-sm outline-none focus:border-black/30"
+          className="h-11 u-border2 bg-[var(--bg)] px-3 text-sm outline-none focus:border-black/30"
         />
       </label>
 
@@ -100,7 +100,7 @@ export function FiltersBar() {
         <div className="flex gap-2">
           <button
             type="button"
-            className="h-10 border border-black/15 px-4 text-sm hover:bg-black/5"
+            className="h-10 u-border2 bg-[var(--bg)] px-4 text-sm hover:bg-black/5"
             onClick={() => {
               setState({ q: "", beds: "", min: "", max: "" });
               router.push("/properties");
@@ -110,7 +110,7 @@ export function FiltersBar() {
           </button>
           <button
             type="submit"
-            className="h-10 border border-black bg-black px-4 text-sm font-medium text-[var(--background)] hover:bg-black/90"
+            className="h-10 u-border bg-[var(--ink)] px-4 text-sm font-semibold text-[var(--bg)] hover:bg-[var(--ink)]/92"
           >
             Apply
           </button>

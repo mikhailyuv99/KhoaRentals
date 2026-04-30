@@ -10,14 +10,14 @@ type Props = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
-  "inline-flex items-center justify-center gap-2 border font-medium tracking-tight transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 font-semibold tracking-tight transition select-none disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<NonNullable<Props["variant"]>, string> = {
   primary:
-    "border-black bg-black text-[var(--background)] hover:bg-black/90 shadow-[0_10px_30px_rgba(0,0,0,0.18)]",
+    "u-border bg-[var(--ink)] text-[var(--bg)] hover:bg-[var(--ink)]/92 shadow-[0_10px_30px_rgba(0,0,0,0.14)]",
   secondary:
-    "border-black/20 bg-transparent text-[var(--foreground)] hover:bg-black/5",
-  ghost: "border-transparent bg-transparent text-[var(--foreground)] hover:bg-black/5",
+    "u-border bg-transparent text-[var(--fg)] hover:bg-black/[0.04]",
+  ghost: "border border-transparent bg-transparent text-[var(--fg)] hover:bg-black/[0.04]",
 };
 
 const sizes: Record<NonNullable<Props["size"]>, string> = {

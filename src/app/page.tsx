@@ -8,7 +8,7 @@ import { Reveal } from "@/components/Reveal";
 export default function Home() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-[var(--background)] min-h-[70vh]">
+      <section className="relative overflow-hidden bg-[var(--bg)] min-h-[78dvh]">
         <HeroBackdrop
           src="/hero-da-nang.png"
           alt="Da Nang city skyline"
@@ -17,17 +17,17 @@ export default function Home() {
         <Container className="relative py-16 sm:py-20 lg:py-28">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 border border-black/10 bg-[var(--background)]/75 px-4 py-2 text-xs text-black/70 backdrop-blur">
+              <div className="inline-flex items-center gap-2 u-border bg-[var(--surface)] px-4 py-2 text-xs text-black/80 backdrop-blur">
                 Apartments & houses across budgets • Monthly rentals • Visits available
               </div>
 
               <h1 className="font-display mt-7 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
                 Find a place in Da Nang —{" "}
-                <span className="text-black/55">and move in with confidence.</span>
+                <span className="text-black/60">and move in with confidence.</span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-7 text-black/65 sm:text-lg sm:leading-8">
-                Browse verified listings with monthly pricing in VND and USD, full photo
-                galleries, and map locations. Schedule a visit and check availability on WhatsApp.
+              <p className="mt-5 max-w-xl text-base leading-7 text-black/70 sm:text-lg sm:leading-8">
+                Browse verified listings with monthly pricing in VND and USD, photo galleries, and
+                map locations. Book a visit and check availability in minutes.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -35,7 +35,7 @@ export default function Home() {
                   Browse listings
                 </Button>
                 <Button href="/contact" size="lg" variant="secondary">
-                  Ask for options
+                  Request options
                 </Button>
               </div>
             </div>
