@@ -13,7 +13,7 @@ export default function Home() {
         <div className="relative">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1723142282970-1fd415eec1ad?auto=format&fit=crop&w=2400&q=80"
+              src="/images/da-nang-hero.png"
               alt="Da Nang coastline"
               fill
               priority
