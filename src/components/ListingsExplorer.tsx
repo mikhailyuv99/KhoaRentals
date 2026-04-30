@@ -109,7 +109,7 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
         className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth rounded-[var(--radius)]"
       >
         {images.map((src, idx) => (
-          <div key={src} className="relative h-[420px] min-w-full snap-center overflow-hidden rounded-[var(--radius)]">
+          <div key={src} className="relative h-[260px] min-w-full snap-center overflow-hidden rounded-[var(--radius)] sm:h-[360px] lg:h-[420px]">
             <Image
               src={src}
               alt={idx === 0 ? title : `${title} photo ${idx + 1}`}

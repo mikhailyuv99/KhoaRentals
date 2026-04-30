@@ -5,6 +5,7 @@ import { ListingsExplorer } from "@/components/ListingsExplorer";
 import { AccordionItem } from "@/components/Accordion";
 import { Reveal } from "@/components/Reveal";
 import { Suspense } from "react";
+import { MobileHeroSearch } from "@/components/MobileHeroSearch";
 
 export default function Home() {
   return (
@@ -34,6 +35,11 @@ export default function Home() {
                 <p className="mt-5 max-w-[560px] text-[18px] leading-[1.6] text-white/85">
                   Your trusted rental agent for monthly homes in Da Nang, offering curated places across budgets.
                 </p>
+                <div className="mt-6 max-w-[520px]">
+                  <Suspense fallback={null}>
+                    <MobileHeroSearch />
+                  </Suspense>
+                </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Button href="#listings" variant="primary">
                     Browse listings

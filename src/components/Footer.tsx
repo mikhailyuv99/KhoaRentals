@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-[color:var(--ui3)] bg-white">
       <Container className="max-w-[1300px] px-6 py-10 sm:px-10 sm:py-14">
-        <div className="grid gap-10 lg:grid-cols-12">
+        <div className="grid gap-6 sm:gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="font-display text-[22px] tracking-tight text-[color:var(--text)]">Khoa Rentals</div>
             <div className="mt-3 max-w-[420px] text-[16px] leading-[1.6] text-[color:var(--text2)]">
@@ -14,7 +14,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-3 lg:gap-10">
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-3 lg:gap-10">
             <div className="grid gap-3">
               <div className="text-[15px] font-medium text-[color:var(--text)]">Explore</div>
               <FooterLink href="/#hero" label="Home" />

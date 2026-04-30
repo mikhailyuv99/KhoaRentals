@@ -34,7 +34,7 @@ export function GoogleMapEmbed({
         src={src}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="h-[360px] w-full"
+        className="h-[260px] w-full sm:h-[320px] lg:h-[360px]"
       />
     </div>
   );
