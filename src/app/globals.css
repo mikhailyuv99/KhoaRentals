@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #070708;
-  --bg2: #0c0c0e;
-  --fg: #f5f1ea;
-  --muted: rgba(245, 241, 234, 0.72);
-  --muted2: rgba(245, 241, 234, 0.48);
-  --border: rgba(245, 241, 234, 0.14);
-  --border2: rgba(245, 241, 234, 0.09);
-  --surface: rgba(245, 241, 234, 0.06);
-  --surface2: rgba(245, 241, 234, 0.03);
-  --accent: #caa86a;
+  /* Realest template tokens (light) */
+  --bg: #ffffff; /* UI 1 */
+  --ui2: #f8f8f8; /* UI 2 */
+  --ui3: #ebebeb; /* UI 3 */
+  --text: #171717; /* Primary Text */
+  --text2: #333333; /* Secondary Text */
+  --accent: #78afcf; /* Accent Color */
+  --radius: 18px;
+
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --dur-1: 150ms;
@@ -27,51 +26,23 @@
 
 body {
   background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  color: var(--text);
+  font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 ::selection {
-  background: rgba(202, 168, 106, 0.35);
+  background: rgba(120, 175, 207, 0.35);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.08;
-  background-image: radial-gradient(rgba(202, 168, 106, 0.18) 0.6px, transparent 0.6px);
-  background-size: 4px 4px;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(
-      900px circle at 15% 20%,
-      rgba(202, 168, 106, 0.10),
-      transparent 55%
-    ),
-    radial-gradient(900px circle at 85% 60%, rgba(245, 241, 234, 0.06), transparent 55%);
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
+/* keep background clean like template (no texture layers) */
 
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(202, 168, 106, 0.35);
+  box-shadow: 0 0 0 3px rgba(120, 175, 207, 0.35);
 }
 
 a {
@@ -80,24 +51,24 @@ a {
 
 @layer utilities {
   .font-display {
-    font-family: var(--font-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    letter-spacing: 0px;
   }
 
   .u-border {
-    border: 1px solid var(--border);
+    border: 1px solid var(--ui3);
   }
 
   .u-border2 {
-    border: 1px solid var(--border2);
+    border: 1px solid var(--ui3);
   }
 
   .u-surface {
-    background: var(--surface);
+    background: var(--ui2);
   }
 
   .u-surface2 {
-    background: var(--surface2);
+    background: #ffffff;
   }
 
   .u-motion {

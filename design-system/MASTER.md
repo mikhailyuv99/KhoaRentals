@@ -2,9 +2,9 @@
 
 ## Product
 - **Type**: Real estate rentals website (monthly-first)
-- **Primary CTA**: Browse properties
+- **Primary CTA**: View listings
 - **Secondary CTA**: WhatsApp inquiry (+84 79 387 5777)
-- **Tone**: High-end editorial (minimal words, strong hierarchy)
+- **Tone**: Minimal, confident, modern
 
 ## Non‑Negotiables (UI/UX Pro Max)
 - **Accessibility**: visible focus, semantic headings, alt text, color contrast ≥ 4.5:1
@@ -13,30 +13,28 @@
 - **Consistency**: token-driven colors/spacing/type; no ad-hoc hex in components
 
 ## Style Direction
-- **Editorial dark luxury**: high contrast, sharp edges, restrained motion, subtle texture.
-- **No rounded “app” pills**: keep corners sharp (0–2px at most).
-- **One elevation language**: borders + faint surface tint, not heavy shadows.
+- **Realest template clone**: light background, soft neutral surfaces, accent blue, rounded cards (18px) and pill CTAs.
+- **Minimal + clean**: lots of whitespace, simple grid, subtle hover.
+- **One elevation language**: thin borders + minimal shadow on hover.
 
 ## Layout
 - **Grid**: 12-col on desktop, 2-col on tablet, 1-col on mobile.
-- **Container**: max width 1120–1200px; generous vertical rhythm.
+- **Container**: max width 1200px (hero text max 700px). Listings section max 1300px.
 - **Breakpoints**: 375 / 768 / 1024 / 1440.
 - **Sections**: use consistent vertical spacing tokens.
 
 ## Typography
-- **Display**: elegant serif for headings (editorial)
-- **Body**: readable serif for long-form
+- **Display**: Inter / Inter Display feel (clean geometric sans)
+- **Body**: Inter
 - **Type scale** (web):
-  - XS 12, SM 14, Base 16, LG 18, XL 24, 2XL 32, 3XL 40–52 (hero)
-- **Body line-height**: 1.5–1.7
+  - Tag 14, Body 17–18, H4 22, H3 32, H2 48, H1 72
+- **Body line-height**: 1.4–1.6
 - **Numbers**: tabular figures for prices
 
 ## Color Tokens (semantic)
 Use CSS variables only:
-- `--bg`, `--fg`
-- `--muted`, `--muted2`
-- `--border`, `--border2`
-- `--surface`, `--surface2`
+- `--bg`, `--ui2`, `--ui3`
+- `--text`, `--text2`
 - `--accent`
 
 ## Interaction States

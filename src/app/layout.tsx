@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Newsreader } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 
-const display = Fraunces({ variable: "--font-display", subsets: ["latin"] });
-const body = Newsreader({ variable: "--font-body", subsets: ["latin"] });
+const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Khoa Rentals — Monthly Rentals in Da Nang",
@@ -22,7 +21,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Header />

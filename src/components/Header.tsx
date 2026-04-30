@@ -1,38 +1,30 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { Button } from "@/components/Button";
-import { whatsappSendUrl } from "@/content/contact";
+import { cn } from "@/lib/cn";
 
 const nav = [
-  { href: "/properties", label: "Properties" },
-  { href: "/areas", label: "Areas" },
-  { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/listings#nav", label: "Listings" },
+  { href: "/blog#nav", label: "Blog" },
+  { href: "/about#nav", label: "About" },
+  { href: "/contact#hero", label: "Contact" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[color:var(--border2)] bg-[color:var(--bg)]/72 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="font-display text-base font-semibold tracking-tight text-[color:var(--fg)]">
-          Khoa Rentals
-        </Link>
+    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur">
+      <Container className="max-w-[1200px]">
+        <div className="flex items-center justify-between gap-6 py-6 px-0 sm:px-0">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-[color:var(--text)]">
+            Khoa Rentals
+          </Link>
 
-        <nav className="hidden items-center gap-5 text-sm md:flex">
-          {nav.map((n) => (
-            <Link key={n.href} href={n.href} className="text-[color:var(--muted)] hover:text-[color:var(--fg)]">
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Button href="/properties" variant="secondary" size="sm" className="hidden sm:inline-flex">
-            View properties
-          </Button>
-          <Button href={whatsappSendUrl("Hi Khoa Rentals — I’d like to ask about monthly rentals in Da Nang.")} variant="ghost" size="sm">
-            WhatsApp
-          </Button>
+          <nav className="hidden items-center gap-6 text-[17px] text-[color:var(--text2)] md:flex">
+            {nav.map((n) => (
+              <Link key={n.href} href={n.href} className={cn("u-motion hover:text-[color:var(--text)]")}>
+                {n.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </Container>
     </header>
