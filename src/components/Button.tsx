@@ -14,17 +14,17 @@ const base =
 
 const variants: Record<NonNullable<Props["variant"]>, string> = {
   primary:
-    "group rounded-full bg-[color:var(--accent)] text-white shadow-[0_12px_28px_rgba(120,175,207,0.35)] hover:brightness-[0.97]",
+    "group rounded-[12px] bg-white text-[color:var(--text)]",
   secondary:
-    "rounded-full u-border bg-white text-[color:var(--text)] hover:bg-[color:var(--ui2)]",
+    "rounded-[12px] bg-[color:var(--text)] text-white",
   ghost:
-    "rounded-full border border-transparent bg-transparent text-[color:var(--text2)] hover:text-[color:var(--text)] hover:bg-[color:var(--ui2)]",
+    "rounded-[12px] border border-transparent bg-transparent text-[color:var(--text2)] hover:text-[color:var(--text)] hover:bg-[color:var(--ui2)]",
 };
 
 const sizes: Record<NonNullable<Props["size"]>, string> = {
-  sm: "h-10 px-4 text-[15px]",
-  md: "h-11 px-5 text-[15px]",
-  lg: "h-12 px-6 text-[15px]",
+  sm: "h-10 px-4 text-[17px]",
+  md: "h-11 px-6 text-[17px]",
+  lg: "h-11 px-6 text-[17px]",
 };
 
 export function Button({
@@ -76,12 +76,12 @@ export function Button({
 function PrimaryContent({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <span>{children}</span>
-      <span className="relative -mr-1 inline-flex h-5 w-5 overflow-hidden">
+      <span className="font-medium">{children}</span>
+      <span className="relative inline-flex h-5 w-5 overflow-hidden px-[6px]">
         <span className="u-motion absolute inset-0 translate-x-0 opacity-100 group-hover:translate-x-6 group-hover:opacity-0">
           <Arrow />
         </span>
-        <span className="u-motion absolute inset-0 -translate-x-6 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+        <span className="u-motion absolute inset-0 translate-x-6 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
           <Arrow />
         </span>
       </span>

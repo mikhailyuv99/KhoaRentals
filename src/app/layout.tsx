@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
@@ -30,7 +29,6 @@ export default function RootLayout({
           <main>{children}</main>
         </SmoothScroll>
         <Footer />
-        <StickyWhatsApp />
       </body>
     </html>
   );
