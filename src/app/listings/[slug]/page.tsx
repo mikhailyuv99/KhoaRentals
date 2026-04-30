@@ -15,7 +15,7 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
     propertyInquiryText({
       propertyName: listing.title,
       propertyPath: `/listings/${listing.slug}`,
-      monthlyUsd: listing.priceUsdMonth,
+      monthlyUsd: 0,
     })
   );
 
@@ -34,17 +34,25 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
         <div className="lg:col-span-7">
           <div className="relative overflow-hidden rounded-[var(--radius)]">
             <div className="relative h-[520px] w-full">
-              <Image src={listing.image} alt={listing.title} fill sizes="(max-width: 1024px) 92vw, 760px" className="object-cover" priority />
+              <Image src={listing.images[0]} alt={listing.title} fill sizes="(max-width: 1024px) 92vw, 760px" className="object-cover" priority />
+            </div>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <div className="relative h-[220px] overflow-hidden rounded-[var(--radius)]">
+              <Image src={listing.images[1]} alt="" fill sizes="(max-width: 1024px) 45vw, 360px" className="object-cover" />
+            </div>
+            <div className="relative h-[220px] overflow-hidden rounded-[var(--radius)]">
+              <Image src={listing.images[2]} alt="" fill sizes="(max-width: 1024px) 45vw, 360px" className="object-cover" />
             </div>
           </div>
         </div>
         <div className="lg:col-span-5">
           <h1 className="text-[48px] font-medium leading-[1.1] text-[color:var(--text)]">{listing.title}</h1>
-          <div className="mt-4 text-[18px] leading-[1.4] text-[color:var(--text2)]">{listing.neighborhood}</div>
-          <div className="mt-8 text-[22px] font-medium text-[color:var(--text)]">{formatUsdCompact(listing.priceUsdMonth)} / month</div>
+          <div className="mt-4 text-[18px] leading-[1.4] text-[color:var(--text2)]">{listing.address}</div>
+          <div className="mt-8 text-[22px] font-medium text-[color:var(--text)]">{formatUsdCompact(listing.price)}</div>
 
           <div className="mt-8 rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] p-6">
-            <div className="text-[18px] leading-[1.4] text-[color:var(--text2)]">{listing.description}</div>
+            <div className="text-[18px] leading-[1.4] text-[color:var(--text2)]">{listing.about}</div>
             <div className="mt-6 grid grid-cols-3 gap-4 text-[17px] text-[color:var(--text2)]">
               <div>
                 <div className="text-[14px]">Beds</div>
@@ -55,8 +63,22 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
                 <div className="mt-1 font-medium text-[color:var(--text)]">{listing.baths}</div>
               </div>
               <div>
-                <div className="text-[14px]">Size</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.sizeSqft.toLocaleString("en-US")} sq.ft</div>
+                <div className="text-[14px]">Living Space</div>
+                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.size}</div>
+              </div>
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-4 text-[17px] text-[color:var(--text2)]">
+              <div>
+                <div className="text-[14px]">Floors</div>
+                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.floors}</div>
+              </div>
+              <div>
+                <div className="text-[14px]">Completion</div>
+                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.completionYear}</div>
+              </div>
+              <div>
+                <div className="text-[14px]">Availability</div>
+                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.availability}</div>
               </div>
             </div>
             <div className="mt-8">

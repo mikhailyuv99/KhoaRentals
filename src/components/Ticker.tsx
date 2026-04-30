@@ -21,9 +21,9 @@ export function Ticker({
   }, [direction, speed]);
 
   return (
-    <div className="w-full overflow-hidden" style={{ height }}>
+    <div className="w-full overflow-hidden group" style={{ height }}>
       <div className="flex w-max items-stretch" style={{ gap }}>
-        <div className="flex w-max" style={{ gap, ...anim }}>
+        <div className="flex w-max group-hover:[animation-play-state:paused]" style={{ gap, ...anim }}>
           {children}
           {children}
         </div>

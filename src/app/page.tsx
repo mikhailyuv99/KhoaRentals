@@ -7,6 +7,9 @@ import { FeaturesSection } from "@/components/FeaturesSection";
 import { TagPill } from "@/components/TagPill";
 import { Ticker } from "@/components/Ticker";
 import { AccordionItem } from "@/components/Accordion";
+import { blogPosts } from "@/content/blog";
+import { BlogCardL } from "@/components/BlogCardL";
+import { BlogCardM } from "@/components/BlogCardM";
 
 export default function Home() {
   return (
@@ -157,6 +160,31 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section>
+        <Container className="max-w-[1300px] px-10 py-[100px]">
+          <div className="flex items-end justify-between gap-10">
+            <div className="max-w-[580px]">
+              <TagPill>Blog</TagPill>
+              <h2 className="mt-6 text-[48px] font-medium leading-[1.1] text-[color:var(--text)]">
+                Explore our latest blogs for real estate insights
+              </h2>
+            </div>
+            <Button href="/blog" variant="primary">
+              View all
+            </Button>
+          </div>
+
+          <div className="mt-[42px] grid gap-4">
+            <BlogCardL post={blogPosts[0]!} />
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {blogPosts.slice(1, 4).map((p) => (
+                <BlogCardM key={p.slug} post={p} />
+              ))}
+            </div>
+          </div>
+        </Container>
       </section>
 
       <section className="py-[100px]">
