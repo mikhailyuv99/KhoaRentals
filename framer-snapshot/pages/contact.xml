@@ -1,0 +1,15 @@
+<Desktop
+    nodeId="siAzj8xEK"
+    position="absolute"
+    width="1200px"
+    height="fit-content"
+    top="0px"
+    left="0px"
+    backgroundColor="/White"
+    overflow="clip"
+    layout="stack"
+    stackDirection="vertical"
+    stackDistribution="start"
+    stackAlignment="center"
+ />
+

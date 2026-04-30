@@ -1,0 +1,41 @@
+<!-- Snapshot from MCP getProjectXml -->
+<Project>
+  <Pages>
+    <Page nodeId="augiA20Il" path="/" />
+    <Page nodeId="XEt47aobt" path="/404" />
+    <Page nodeId="oJ_XIztJF" path="/properties/:slug" />
+    <Page nodeId="y6XdgSh9G" path="/contact" />
+    <Page nodeId="JspeZp2_f" path="/listings" />
+  </Pages>
+  <DesignPages />
+  <Components>
+    <Component nodeId="DS0quI2Hf" name="Achieve List" />
+    <Component nodeId="Vwgi3a7lM" name="Agent Avatar Wrap" />
+    <Component nodeId="mHZkaKnhe" name="Agent Avatar" />
+    <Component nodeId="N3M2FON3I" name="Agent Rating Wrap" />
+    <Component nodeId="hTJRZmVtO" name="Badge" />
+    <Component nodeId="D1l9m36Vp" name="Feature Card" />
+    <Component nodeId="ejp83ElAi" name="Testimonial Wrap" />
+    <Component nodeId="bLLk7F8Ji" name="FAQ Component" />
+    <Component nodeId="a7hHA3qzs" name="Form Button" />
+    <Component nodeId="MzgY9ekap" name="Hero Button" />
+    <Component nodeId="vMpIIuW4E" name="Nav Button" />
+    <Component nodeId="nKOLMWaCn" name="Nav Menu" />
+    <Component nodeId="aPpZS_1za" name="Feature Service Wrap" />
+    <Component nodeId="wiwYxXVW4" name="Nav" />
+    <Component nodeId="LgTpwk9HE" name="Agents Ticker" />
+    <Component nodeId="K2fhpWSiH" name="Footer" />
+    <Component nodeId="q4hWjzMvS" name="FAQ Wrap" />
+    <Component nodeId="nRD0jldTT" name="Property Item" />
+    <Component nodeId="K3m0R763C" name="About Item" />
+    <Component nodeId="KDNeozvho" name="Bullet Point" />
+    <Component nodeId="XLQw6eg1f" name="Property Amenity" />
+    <Component nodeId="oMOCfSp2Q" name="Sidebar Button" />
+    <Component nodeId="z2bDyW6VE" name="Get Template Button" />
+    <Component nodeId="qOOhjrT6e" name="New release" />
+  </Components>
+  <CodeComponents />
+  <CodeOverrides />
+  <!-- Styles omitted for brevity; use getProjectXml for full style list -->
+</Project>
+

@@ -1,0 +1,27 @@
+<Desktop
+    nodeId="WQLkyLRf1"
+    position="absolute"
+    width="1280px"
+    height="fit-content"
+    top="0px"
+    left="0px"
+    backgroundColor="/White"
+    overflow="visible"
+    layout="stack"
+    stackDirection="vertical"
+    stackDistribution="start"
+    stackAlignment="center"
+>
+  <!-- Full page XML exported from MCP getNodeXml; truncated nodes may require deeper getNodeXml calls -->
+  <Hero nodeId="l801ubO5I" width="1fr" height="100vh" overflow="hidden" layout="stack" padding="96px 80px 40px 80px" stackDirection="horizontal" stackDistribution="center" stackAlignment="center">
+    <HeroBgWrap nodeId="t_kKM5bAk" width="1fr" height="1fr" backgroundColor="/Black" borderRadius="32px 32px 0px 32px" overflow="hidden" layout="stack" padding="0px 0px 0px 80px" stackDirection="vertical" stackDistribution="center" stackAlignment="start">
+      <HeroCover nodeId="w_oGbknsp" position="absolute" width="100%" height="100%" centerX="50%" centerY="50%" borderRadius="0px" backgroundImage="https://framerusercontent.com/images/rQXeeWMbrXXzxko63WI4Z1ZVIk.jpg" zIndex="1" overflow="hidden" />
+      <HeroOverlay nodeId="UF31kXJJW" position="absolute" width="100%" height="100%" top="0px" left="0px" borderRadius="0px" zIndex="1" overflow="hidden" />
+      <HeroContent nodeId="NwtU5gEzY" width="60%" height="fit-content" maxWidth="800px" zIndex="2" overflow="hidden" layout="stack" gap="32px" stackDirection="vertical" stackDistribution="start" stackAlignment="start">
+        <FindYourPerfectHomeToday nodeId="slb4PkeHN" width="1fr" height="fit-content" inlineTextStyle="/Heading 1">Find Your Perfect Home Today</FindYourPerfectHomeToday>
+      </HeroContent>
+    </HeroBgWrap>
+  </Hero>
+  <!-- NOTE: The remainder of the home page XML is large; see original MCP output if you need the full tree. -->
+</Desktop>
+

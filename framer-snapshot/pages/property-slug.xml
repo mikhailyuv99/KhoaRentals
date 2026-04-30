@@ -1,0 +1,20 @@
+<Desktop
+    nodeId="IB7MuQyNB"
+    position="absolute"
+    width="1280px"
+    height="fit-content"
+    top="0px"
+    left="0px"
+    backgroundColor="/White"
+    overflow="hidden"
+    layout="stack"
+    gap="160px"
+    padding="140px 20px 140px 20px"
+    stackDirection="vertical"
+    stackDistribution="start"
+    stackAlignment="center"
+>
+  <!-- Truncated: use MCP getNodeXml for full detail -->
+  <Property nodeId="QglUUEbrb" position="absolute" width="1fr" height="fit-content" top="0px" left="0px" overflow="visible" layout="stack" padding="128px 80px 80px 80px" stackDirection="vertical" stackDistribution="center" stackAlignment="center" />
+</Desktop>
+

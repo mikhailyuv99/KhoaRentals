@@ -1,0 +1,82 @@
+<Desktop
+    nodeId="yGF3gCD6d"
+    position="absolute"
+    width="1280px"
+    height="1080px"
+    top="0px"
+    left="0px"
+    backgroundColor="white"
+    overflow="hidden"
+    layout="stack"
+    stackDirection="vertical"
+    stackDistribution="start"
+    stackAlignment="center"
+>
+  <Container
+      nodeId="j0SHbfcPN"
+      position="absolute"
+      width="70%"
+      height="100vh"
+      top="160px"
+      centerX="46%"
+      maxWidth="1440px"
+      overflow="hidden"
+      layout="stack"
+      gap="48px"
+      stackDirection="vertical"
+      stackDistribution="center"
+      stackAlignment="center"
+  >
+    <TextWrapMedium
+        nodeId="KgWrK0BEU"
+        position="absolute"
+        width="1fr"
+        height="fit-content"
+        top="0px"
+        left="0px"
+        maxWidth="780px"
+        overflow="hidden"
+        layout="stack"
+        gap="16px"
+        stackDirection="vertical"
+        stackDistribution="start"
+        stackAlignment="center"
+    >
+      <404
+          nodeId="fCKyJ8bP9"
+          position="absolute"
+          width="1fr"
+          height="fit-content"
+          centerX="50%"
+          centerY="54%"
+          inlineTextStyle="/Heading 1"
+      >
+        404
+      </404>
+      <LooksLikeThePageYouReLookingForIsnTHereMaybeItSTakingABreakJ
+          nodeId="aroqtfkxN"
+          position="absolute"
+          width="1fr"
+          height="fit-content"
+          centerX="50%"
+          centerY="88%"
+          inlineTextStyle="/Body M"
+      >
+        Looks like the page you&apos;re looking for isn&apos;t here. Maybe it’s taking a break, just like we all need sometimes.
+      </LooksLikeThePageYouReLookingForIsnTHereMaybeItSTakingABreakJ>
+    </TextWrapMedium>
+    <NavButton
+        nodeId="BpavetpIf"
+        position="absolute"
+        width="fit-content"
+        height="fit-content"
+        top="442px"
+        left="532px"
+        componentId="vMpIIuW4E"
+        variant="tZjWhEJN9"
+        DFJK9JHG8="Back Home"
+        C9ciKe7no="/"
+     />
+  </Container>
+</Desktop>
+

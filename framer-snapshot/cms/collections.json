@@ -1,0 +1,47 @@
+{
+  "message": "Found 2 CMS collection(s)",
+  "collections": [
+    {
+      "id": "TgH5m5E9k",
+      "name": "Properties",
+      "managedBy": "user",
+      "readonly": false,
+      "fields": [
+        { "id": "FyiWMPYxW", "name": "Property Name", "type": "string", "required": true },
+        { "id": "i4yMOcKlK", "name": "Images", "type": "divider" },
+        { "id": "L0X91pWnv", "name": "Property Cover Image", "type": "image", "required": true },
+        { "id": "w6X1RmTbh", "name": "Property Small Image 1", "type": "image", "required": true },
+        { "id": "tl3amFV42", "name": "Property Small Image 2", "type": "image", "required": true },
+        { "id": "gzfjyhwQX", "name": "Proterty Details", "type": "divider" },
+        { "id": "SPQDVxaW8", "name": "Property Location", "type": "string", "required": true },
+        { "id": "PKNBhGGlJ", "name": "Property Price", "type": "string", "required": false },
+        { "id": "HpkpBYF6v", "name": "Property Area", "type": "string", "required": false },
+        { "id": "G_Ixjj0uv", "name": "Property Rooms", "type": "string", "required": false },
+        { "id": "X4aTwvy2D", "name": "Property Bathrooms", "type": "string", "required": false },
+        {
+          "id": "D1F8434qi",
+          "name": "Property Category",
+          "type": "enum",
+          "cases": [
+            { "id": "cKFLGGGJc", "name": "For Sell" },
+            { "id": "abE2IuPAl", "name": "For Rent" },
+            { "id": "GUiOyeuMI", "name": "For Investment" }
+          ]
+        },
+        { "id": "XSrUMQP_H", "name": "Overview", "type": "string", "required": true }
+      ]
+    },
+    {
+      "id": "XI14YPIJr",
+      "name": "Agents",
+      "managedBy": "user",
+      "readonly": false,
+      "fields": [
+        { "id": "XsIgC4Uiy", "name": "Agent Name", "type": "string", "required": true },
+        { "id": "mXt99x75u", "name": "Agent Image", "type": "image", "required": true },
+        { "id": "rnkw5lfhL", "name": "Agent Title", "type": "string", "required": true }
+      ]
+    }
+  ]
+}
+
