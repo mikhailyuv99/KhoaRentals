@@ -28,7 +28,7 @@ export default function Home() {
               <div className="max-w-[840px] page-in">
                 <h1 className="font-display text-[56px] leading-[1.05] tracking-[-0.02em] text-white sm:text-[68px] md:text-[76px]">
                   Discover the perfect place to call home in{" "}
-                  <span className="hero-accent">Da Nang</span>
+                  <span>Da Nang</span>
                 </h1>
                 <p className="mt-5 max-w-[560px] text-[18px] leading-[1.6] text-white/85">
                   Your trusted rental agent for monthly homes in Da Nang, offering curated places across budgets.

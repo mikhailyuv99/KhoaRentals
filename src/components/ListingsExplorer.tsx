@@ -287,31 +287,7 @@ export function ListingsExplorer({
     wrap.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [selected]);
 
-  // When expanded, lock page scroll so user stays in Listings.
-  useEffect(() => {
-    const html = document.documentElement;
-    const body = document.body;
-    const wasHtmlOverflow = html.style.overflow;
-    const wasBodyOverflow = body.style.overflow;
-
-    const lenis = (window as unknown as { __khoaLenis?: { stop: () => void; start: () => void } }).__khoaLenis;
-
-    if (selected) {
-      html.style.overflow = "hidden";
-      body.style.overflow = "hidden";
-      lenis?.stop?.();
-    } else {
-      html.style.overflow = wasHtmlOverflow;
-      body.style.overflow = wasBodyOverflow;
-      lenis?.start?.();
-    }
-
-    return () => {
-      html.style.overflow = wasHtmlOverflow;
-      body.style.overflow = wasBodyOverflow;
-      lenis?.start?.();
-    };
-  }, [selected]);
+  // Keep normal page scroll even when expanded.
 
   const selectedIndex = selectedSlug ? items.findIndex((l) => l.slug === selectedSlug) : -1;
   const insertAfterIndex =
