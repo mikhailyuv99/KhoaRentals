@@ -1,7 +1,6 @@
-import { listings } from "@/content/listings";
-import { ListingCard } from "@/components/ListingCard";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
+import { ListingsExplorer } from "@/components/ListingsExplorer";
 
 export default function ListingsPage() {
   return (
@@ -20,10 +19,8 @@ export default function ListingsPage() {
         </Button>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {listings.map((l) => (
-          <ListingCard key={l.slug} listing={l} />
-        ))}
+      <div className="mt-12">
+        <ListingsExplorer />
       </div>
     </Container>
   );

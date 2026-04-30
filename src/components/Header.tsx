@@ -3,9 +3,7 @@ import { Container } from "@/components/Container";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { href: "/listings#nav", label: "Listings" },
-  { href: "/blog#nav", label: "Blog" },
-  { href: "/about#nav", label: "About" },
+  { href: "/#listings", label: "Listings" },
   { href: "/contact#hero", label: "Contact" },
 ];
 
@@ -14,7 +12,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur">
       <Container className="max-w-[1200px]">
         <div className="flex items-center justify-between gap-6 py-6 px-0 sm:px-0">
-          <Link href="/" className="text-lg font-semibold tracking-tight text-[color:var(--text)]">
+          <Link href="/" className="font-display text-lg tracking-tight text-[color:var(--text)]">
             Khoa Rentals
           </Link>
 
