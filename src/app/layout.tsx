@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -28,7 +29,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <BrandedLoader />
-        <Header />
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
         <SmoothScroll>
           <main>{children}</main>
         </SmoothScroll>

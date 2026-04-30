@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import { GoogleMapEmbed } from "@/components/GoogleMapEmbed";
 import { Button } from "@/components/Button";
 import { propertyInquiryText, whatsappSendUrl } from "@/content/contact";
+import { useSearchParams } from "next/navigation";
 
 function Icon({ children }: { children: React.ReactNode }) {
   return <span className="inline-flex h-[15px] w-[15px] items-center justify-center">{children}</span>;
@@ -244,9 +245,23 @@ export function ListingsExplorer({
   initialLimit?: number;
   className?: string;
 }) {
+  const searchParams = useSearchParams();
+  const q = (searchParams.get("q") || "").trim().toLowerCase();
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-  const selected = useMemo(() => listings.find((l) => l.slug === selectedSlug) ?? null, [selectedSlug]);
-  const items = initialLimit ? listings.slice(0, initialLimit) : listings;
+  const filtered = useMemo(() => {
+    if (!q) return listings;
+    const tokens = q.split(/\s+/g).filter(Boolean);
+
+    const haystackFor = (l: Listing) => {
+      const beds = l.beds === 0 ? "studio" : `${l.beds} bed ${l.beds} bedroom ${l.beds} bedrooms`;
+      return `${l.title} ${l.area} ${l.address} ${beds} ${l.baths} bath ${l.baths} baths`.toLowerCase();
+    };
+
+    return listings.filter((l) => tokens.every((t) => haystackFor(l).includes(t)));
+  }, [q]);
+
+  const items = useMemo(() => (initialLimit ? filtered.slice(0, initialLimit) : filtered), [filtered, initialLimit]);
+  const selected = useMemo(() => items.find((l) => l.slug === selectedSlug) ?? null, [items, selectedSlug]);
   const expandedWrapRef = useRef<HTMLDivElement | null>(null);
   const expandedContentRef = useRef<HTMLDivElement | null>(null);
   const [expandedMaxHeight, setExpandedMaxHeight] = useState<number>(0);
@@ -328,9 +343,7 @@ export function ListingsExplorer({
                   aria-hidden={!selected}
                 >
                   <div ref={expandedContentRef} className="pt-6">
-                    <div className="max-h-[calc(100vh-180px)] overflow-y-auto">
-                      <ListingExpanded listing={selected} />
-                    </div>
+                    <ListingExpanded listing={selected} />
                   </div>
                 </div>
               </div>

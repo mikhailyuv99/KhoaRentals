@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { ListingsExplorer } from "@/components/ListingsExplorer";
+import { Suspense } from "react";
 
 export default function ListingsPage() {
   return (
@@ -20,7 +21,9 @@ export default function ListingsPage() {
       </div>
 
       <div className="mt-12">
-        <ListingsExplorer />
+        <Suspense fallback={null}>
+          <ListingsExplorer />
+        </Suspense>
       </div>
     </Container>
   );

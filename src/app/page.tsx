@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { ListingsExplorer } from "@/components/ListingsExplorer";
 import { AccordionItem } from "@/components/Accordion";
 import { Reveal } from "@/components/Reveal";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
               <div className="max-w-[840px] page-in">
                 <h1 className="font-display text-[56px] leading-[1.05] tracking-[-0.02em] text-white sm:text-[68px] md:text-[76px]">
                   Discover the perfect place to call home in{" "}
-                  <span className="hero-loop">Da Nang</span>
+                  <span className="hero-accent">Da Nang</span>
                 </h1>
                 <p className="mt-5 max-w-[560px] text-[18px] leading-[1.6] text-white/85">
                   Your trusted rental agent for monthly homes in Da Nang, offering curated places across budgets.
@@ -65,7 +66,9 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-12">
-            <ListingsExplorer initialLimit={6} />
+            <Suspense fallback={null}>
+              <ListingsExplorer initialLimit={6} />
+            </Suspense>
           </div>
         </Container>
       </section>
