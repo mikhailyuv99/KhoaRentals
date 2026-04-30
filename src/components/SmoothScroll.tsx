@@ -20,9 +20,13 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
     raf = requestAnimationFrame(loop);
 
+    // Expose for temporary scroll locks (e.g. expanded listings).
+    (window as unknown as { __khoaLenis?: Lenis }).__khoaLenis = lenis;
+
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      (window as unknown as { __khoaLenis?: Lenis }).__khoaLenis = undefined;
     };
   }, []);
 

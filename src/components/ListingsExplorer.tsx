@@ -250,6 +250,17 @@ export function ListingsExplorer({
   const expandedWrapRef = useRef<HTMLDivElement | null>(null);
   const expandedContentRef = useRef<HTMLDivElement | null>(null);
   const [expandedMaxHeight, setExpandedMaxHeight] = useState<number>(0);
+  const [cols, setCols] = useState<1 | 2 | 3>(3);
+
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      setCols(w >= 1024 ? 3 : w >= 768 ? 2 : 1);
+    };
+    compute();
+    window.addEventListener("resize", compute, { passive: true });
+    return () => window.removeEventListener("resize", compute);
+  }, []);
 
   useEffect(() => {
     const wrap = expandedWrapRef.current;
@@ -261,31 +272,73 @@ export function ListingsExplorer({
     wrap.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [selected]);
 
+  // When expanded, lock page scroll so user stays in Listings.
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const wasHtmlOverflow = html.style.overflow;
+    const wasBodyOverflow = body.style.overflow;
+
+    const lenis = (window as unknown as { __khoaLenis?: { stop: () => void; start: () => void } }).__khoaLenis;
+
+    if (selected) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      lenis?.stop?.();
+    } else {
+      html.style.overflow = wasHtmlOverflow;
+      body.style.overflow = wasBodyOverflow;
+      lenis?.start?.();
+    }
+
+    return () => {
+      html.style.overflow = wasHtmlOverflow;
+      body.style.overflow = wasBodyOverflow;
+      lenis?.start?.();
+    };
+  }, [selected]);
+
+  const selectedIndex = selectedSlug ? items.findIndex((l) => l.slug === selectedSlug) : -1;
+  const insertAfterIndex =
+    selectedIndex >= 0 ? Math.min(items.length - 1, Math.floor(selectedIndex / cols) * cols + (cols - 1)) : -1;
+
   return (
     <div className={className}>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {items.map((l) => (
-          <ListingSummaryCard
-            key={l.slug}
-            listing={l}
-            active={l.slug === selectedSlug}
-            onClick={() => setSelectedSlug((prev) => (prev === l.slug ? null : l.slug))}
-          />
-        ))}
-      </div>
+        {items.flatMap((l, idx) => {
+          const nodes: React.ReactNode[] = [
+            <ListingSummaryCard
+              key={l.slug}
+              listing={l}
+              active={l.slug === selectedSlug}
+              onClick={() => setSelectedSlug((prev) => (prev === l.slug ? null : l.slug))}
+            />,
+          ];
 
-      <div
-        ref={expandedWrapRef}
-        className={cn(
-          "transition-[max-height,opacity,transform] duration-300 [transition-timing-function:var(--ease-out)]",
-          selected ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
-        )}
-        style={{ maxHeight: selected ? expandedMaxHeight : 0, overflow: "hidden" }}
-        aria-hidden={!selected}
-      >
-        <div ref={expandedContentRef} className="pt-8">
-          {selected ? <ListingExpanded listing={selected} /> : null}
-        </div>
+          if (selected && idx === insertAfterIndex) {
+            nodes.push(
+              <div key={`${l.slug}__expanded`} className="col-span-full">
+                <div
+                  ref={expandedWrapRef}
+                  className={cn(
+                    "transition-[max-height,opacity,transform] duration-400 [transition-timing-function:var(--ease-out)]",
+                    selected ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+                  )}
+                  style={{ maxHeight: selected ? expandedMaxHeight : 0, overflow: "hidden" }}
+                  aria-hidden={!selected}
+                >
+                  <div ref={expandedContentRef} className="pt-6">
+                    <div className="max-h-[calc(100vh-180px)] overflow-y-auto">
+                      <ListingExpanded listing={selected} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          return nodes;
+        })}
       </div>
     </div>
   );

@@ -92,7 +92,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-7">
               <div className="grid gap-4">
-                <AccordionItem title="Do you charge a fee?" defaultOpen>
+                <AccordionItem title="Do you charge a fee?">
                   It depends on the property and the landlord. We’ll confirm clearly before any commitment.
                 </AccordionItem>
                 <AccordionItem title="How fast can I view a place?">

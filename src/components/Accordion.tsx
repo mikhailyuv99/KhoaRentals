@@ -20,13 +20,13 @@ export function AccordionItem({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)]",
+        "group overflow-hidden rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] u-motion hover:bg-white",
         className
       )}
     >
       <button
         type="button"
-        className="u-motion flex w-full items-center justify-between gap-6 p-4 text-left hover:bg-white"
+        className="u-motion flex w-full items-center justify-between gap-6 p-4 text-left"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
@@ -53,7 +53,7 @@ export function AccordionItem({
         )}
       >
         <div className="overflow-hidden">
-          <div className="px-4 pb-4 text-[17px] leading-[1.4] text-[color:var(--text2)]">{children}</div>
+          <div className="u-motion px-4 pb-4 text-[17px] leading-[1.4] text-[color:var(--text2)] group-hover:bg-white">{children}</div>
         </div>
       </div>
     </div>
