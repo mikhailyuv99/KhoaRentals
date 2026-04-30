@@ -55,13 +55,23 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur">
       <Container className="max-w-[1200px]">
-        <div className="grid items-center gap-6 py-5 [grid-template-columns:auto_1fr_auto]">
-          <Link href="/" className="font-display text-lg tracking-tight text-[color:var(--text)]">
-            Khoa Rentals
-          </Link>
+        <div className="grid gap-3 py-4 md:items-center md:gap-6 md:py-5 md:[grid-template-columns:auto_1fr_auto]">
+          <div className="flex items-center justify-between gap-4">
+            <Link href="/" className="font-display text-lg tracking-tight text-[color:var(--text)]">
+              Khoa Rentals
+            </Link>
 
-          <div className="hidden justify-center md:flex">
-            <div className="relative w-[min(520px,42vw)]">
+            <nav className="hidden items-center justify-end gap-6 text-[17px] text-[color:var(--text2)] md:flex">
+              {nav.map((n) => (
+                <Link key={n.href} href={n.href} className={cn("u-motion hover:text-[color:var(--text)]")}>
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="flex justify-center md:flex">
+            <div className="relative w-full md:w-[min(520px,42vw)]">
               <svg
                 viewBox="0 0 24 24"
                 className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--text2)]"
@@ -116,14 +126,6 @@ export function Header() {
               ) : null}
             </div>
           </div>
-
-          <nav className="hidden items-center justify-end gap-6 text-[17px] text-[color:var(--text2)] md:flex">
-            {nav.map((n) => (
-              <Link key={n.href} href={n.href} className={cn("u-motion hover:text-[color:var(--text)]")}>
-                {n.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </Container>
     </header>

@@ -263,8 +263,6 @@ export function ListingsExplorer({
   const items = useMemo(() => (initialLimit ? filtered.slice(0, initialLimit) : filtered), [filtered, initialLimit]);
   const selected = useMemo(() => items.find((l) => l.slug === selectedSlug) ?? null, [items, selectedSlug]);
   const expandedWrapRef = useRef<HTMLDivElement | null>(null);
-  const expandedContentRef = useRef<HTMLDivElement | null>(null);
-  const [expandedMaxHeight, setExpandedMaxHeight] = useState<number>(0);
   const [cols, setCols] = useState<1 | 2 | 3>(3);
 
   useEffect(() => {
@@ -279,11 +277,7 @@ export function ListingsExplorer({
 
   useEffect(() => {
     const wrap = expandedWrapRef.current;
-    const content = expandedContentRef.current;
-    if (!wrap || !content || !selected) return;
-    // Measure after render
-    const h = content.scrollHeight;
-    setExpandedMaxHeight(h);
+    if (!wrap || !selected) return;
     wrap.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [selected]);
 
@@ -309,17 +303,16 @@ export function ListingsExplorer({
           if (selected && idx === insertAfterIndex) {
             nodes.push(
               <div key={`${l.slug}__expanded`} className="col-span-full">
-                <div
-                  ref={expandedWrapRef}
-                  className={cn(
-                    "transition-[max-height,opacity,transform] duration-400 [transition-timing-function:var(--ease-out)]",
-                    selected ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
-                  )}
-                  style={{ maxHeight: selected ? expandedMaxHeight : 0, overflow: "hidden" }}
-                  aria-hidden={!selected}
-                >
-                  <div ref={expandedContentRef} className="pt-6">
-                    <ListingExpanded listing={selected} />
+                <div ref={expandedWrapRef} className="pt-6">
+                  <div
+                    className={cn(
+                      "grid transition-[grid-template-rows] duration-400 [transition-timing-function:var(--ease-out)]",
+                      selected ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <ListingExpanded listing={selected} />
+                    </div>
                   </div>
                 </div>
               </div>
