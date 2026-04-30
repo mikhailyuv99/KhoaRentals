@@ -175,27 +175,36 @@ function ListingExpanded({ listing }: { listing: Listing }) {
       <div className="grid gap-8 p-5 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <Carousel images={listing.images} title={listing.title} />
-          <div className="mt-6">
-            <GoogleMapEmbed
-              lat={listing.location.lat}
-              lng={listing.location.lng}
-              title={`${listing.area} — ${listing.address}`}
-              googleMapsUrl={listing.googleMapsUrl}
-            />
-          </div>
+        </div>
+        <div className="lg:col-span-5">
+          <GoogleMapEmbed
+            lat={listing.location.lat}
+            lng={listing.location.lng}
+            title={`${listing.area} — ${listing.address}`}
+            googleMapsUrl={listing.googleMapsUrl}
+          />
         </div>
 
-        <div className="lg:col-span-5">
-          <div className="font-display text-[34px] leading-[1.1] tracking-tight text-[color:var(--text)]">
-            {formatUsdCompact(listing.monthlyUsd)}
-            <span className="ml-2 text-[14px] font-normal text-[color:var(--text2)]">/ month</span>
-          </div>
-          <div className="mt-1 text-[15px] text-[color:var(--text2)]">{formatVndCompact(listing.monthlyVnd)} / month</div>
+        <div className="lg:col-span-12">
+          <div className="rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] p-5">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <div className="font-display text-[34px] leading-[1.1] tracking-tight text-[color:var(--text)]">
+                  {formatUsdCompact(listing.monthlyUsd)}
+                  <span className="ml-2 text-[14px] font-normal text-[color:var(--text2)]">/ month</span>
+                </div>
+                <div className="mt-1 text-[15px] text-[color:var(--text2)]">{formatVndCompact(listing.monthlyVnd)} / month</div>
+              </div>
+              <div className="shrink-0">
+                <Button href={inquiryUrl} variant="primary">
+                  Contact on WhatsApp
+                </Button>
+              </div>
+            </div>
 
-          <div className="mt-6 rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] p-5">
-            <div className="text-[16px] leading-[1.7] text-[color:var(--text2)]">{listing.about}</div>
+            <div className="mt-6 text-[16px] leading-[1.7] text-[color:var(--text2)]">{listing.about}</div>
 
-            <div className="mt-6 grid grid-cols-3 gap-4 text-[15px] text-[color:var(--text2)]">
+            <div className="mt-6 grid grid-cols-2 gap-4 text-[15px] text-[color:var(--text2)] sm:grid-cols-3 lg:grid-cols-6">
               <div>
                 <div className="text-[13px]">Beds</div>
                 <div className="mt-1 font-medium text-[color:var(--text)]">{listing.beds === 0 ? "Studio" : listing.beds}</div>
@@ -208,9 +217,6 @@ function ListingExpanded({ listing }: { listing: Listing }) {
                 <div className="text-[13px]">Size</div>
                 <div className="mt-1 font-medium text-[color:var(--text)]">{listing.sizeM2} m²</div>
               </div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-3 gap-4 text-[15px] text-[color:var(--text2)]">
               <div>
                 <div className="text-[13px]">Area</div>
                 <div className="mt-1 font-medium text-[color:var(--text)]">{listing.area}</div>
@@ -223,12 +229,6 @@ function ListingExpanded({ listing }: { listing: Listing }) {
                 <div className="text-[13px]">Address</div>
                 <div className="mt-1 font-medium text-[color:var(--text)]">{listing.address}</div>
               </div>
-            </div>
-
-            <div className="mt-6">
-              <Button href={inquiryUrl} variant="secondary">
-                Ask about availability
-              </Button>
             </div>
           </div>
         </div>
@@ -247,11 +247,18 @@ export function ListingsExplorer({
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const selected = useMemo(() => listings.find((l) => l.slug === selectedSlug) ?? null, [selectedSlug]);
   const items = initialLimit ? listings.slice(0, initialLimit) : listings;
-  const expandedRef = useRef<HTMLDivElement | null>(null);
+  const expandedWrapRef = useRef<HTMLDivElement | null>(null);
+  const expandedContentRef = useRef<HTMLDivElement | null>(null);
+  const [expandedMaxHeight, setExpandedMaxHeight] = useState<number>(0);
 
   useEffect(() => {
-    if (!selected || !expandedRef.current) return;
-    expandedRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    const wrap = expandedWrapRef.current;
+    const content = expandedContentRef.current;
+    if (!wrap || !content || !selected) return;
+    // Measure after render
+    const h = content.scrollHeight;
+    setExpandedMaxHeight(h);
+    wrap.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [selected]);
 
   return (
@@ -267,11 +274,17 @@ export function ListingsExplorer({
         ))}
       </div>
 
-      {selected ? (
-        <div ref={expandedRef}>
-          <ListingExpanded listing={selected} />
-        </div>
-      ) : null}
+      <div
+        ref={expandedWrapRef}
+        className={cn(
+          "transition-[max-height,opacity,transform] duration-300 [transition-timing-function:var(--ease-out)]",
+          selected ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+        )}
+        style={{ maxHeight: selected ? expandedMaxHeight : 0, overflow: "hidden" }}
+        aria-hidden={!selected}
+      >
+        <div ref={expandedContentRef}>{selected ? <ListingExpanded listing={selected} /> : null}</div>
+      </div>
     </div>
   );
 }

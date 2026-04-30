@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { ListingsExplorer } from "@/components/ListingsExplorer";
+import { AccordionItem } from "@/components/Accordion";
 
 export default function Home() {
   return (
@@ -61,6 +62,45 @@ export default function Home() {
 
           <div className="mt-12">
             <ListingsExplorer initialLimit={6} />
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y border-[color:var(--ui3)] bg-[color:var(--ui2)] py-[100px]">
+        <Container className="max-w-[1220px] px-10">
+          <div className="grid gap-[42px] lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div className="inline-flex rounded-full border border-[color:var(--ui3)] bg-white px-4 py-2 text-[14px] font-medium text-[color:var(--text2)]">
+                FAQs
+              </div>
+              <h2 className="font-display mt-6 max-w-[520px] text-[44px] leading-[1.1] tracking-[-0.01em] text-[color:var(--text)] sm:text-[48px]">
+                Quick answers before you book a viewing
+              </h2>
+              <p className="mt-4 max-w-[360px] text-[17px] leading-[1.6] text-[color:var(--text2)]">
+                Monthly rentals in Da Nang—how it works, what to expect, and how fast we can help.
+              </p>
+              <div className="mt-6">
+                <Button href="/contact" variant="primary">
+                  Contact Khoa
+                </Button>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="grid gap-4">
+                <AccordionItem title="Do you charge a fee?" defaultOpen>
+                  It depends on the property and the landlord. We’ll confirm clearly before any commitment.
+                </AccordionItem>
+                <AccordionItem title="How fast can I view a place?">
+                  Usually same day or next day, depending on availability and the building rules.
+                </AccordionItem>
+                <AccordionItem title="What’s typically included in monthly rentals?">
+                  Many apartments include Wi‑Fi and basic services. Cleaning, utilities, and management vary—ask and we’ll verify.
+                </AccordionItem>
+                <AccordionItem title="Can you help with contracts and deposits?">
+                  Yes—translation support, deposit guidance, and lease paperwork are part of the service.
+                </AccordionItem>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
