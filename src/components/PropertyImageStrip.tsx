@@ -10,6 +10,12 @@ export function PropertyImageStrip({ images }: { images: Img[] }) {
   const safe = useMemo(() => images.filter(Boolean), [images]);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
+  const scrollBy = (dx: number) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dx, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -28,7 +34,23 @@ export function PropertyImageStrip({ images }: { images: Img[] }) {
     <div>
       <div className="flex items-center justify-between">
         <div className="text-sm font-semibold text-[var(--foreground)]">Photos</div>
-        <div className="text-xs text-black/55">{safe.length} images • scroll →</div>
+        <div className="flex items-center gap-2 text-xs text-black/55">
+          <button
+            type="button"
+            onClick={() => scrollBy(-520)}
+            className="border border-black/10 bg-[var(--background)] px-3 py-2 hover:bg-black/5"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollBy(520)}
+            className="border border-black/10 bg-[var(--background)] px-3 py-2 hover:bg-black/5"
+          >
+            →
+          </button>
+          <span className="hidden sm:inline">{safe.length} images</span>
+        </div>
       </div>
 
       <div className="relative mt-3">

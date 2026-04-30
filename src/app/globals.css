@@ -39,7 +39,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.09;
+  /* Disabled globally to prevent banding artifacts in production (Netlify). */
+  opacity: 0;
   background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 3px 3px;
   /* Keep it subtle; avoid dark “bands” on flat sections like the footer. */

@@ -28,7 +28,7 @@ export function WhatsAppFloatingButton() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group fixed right-4 top-1/2 z-[1000] -translate-y-1/2 border border-black/15 bg-black text-[var(--background)] shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 pointer-events-auto max-sm:bottom-5 max-sm:top-auto max-sm:-translate-y-0"
+      className="group fixed right-4 top-1/2 z-[2147483647] -translate-y-1/2 border border-black/15 bg-black text-[var(--background)] shadow-[0_10px_30px_rgba(0,0,0,0.22)] hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 pointer-events-auto max-sm:bottom-5 max-sm:top-auto max-sm:-translate-y-0"
       aria-label="Message"
     >
       <span className="grid h-12 w-12 place-items-center">
