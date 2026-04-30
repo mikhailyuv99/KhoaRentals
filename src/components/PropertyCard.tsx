@@ -9,7 +9,7 @@ export function PropertyCard({ property }: { property: Property }) {
 
   return (
     <Link
-      href={`/properties/${property.slug}`}
+      href={`/property/${property.slug}`}
       className={cn(
         "group overflow-hidden u-border bg-[var(--surface2)] backdrop-blur transition",
         "hover:bg-[var(--surface)]"
@@ -41,11 +41,11 @@ export function PropertyCard({ property }: { property: Property }) {
             <div className="text-base font-semibold tracking-tight text-[var(--fg)]">
               {property.name}
             </div>
-            <div className="mt-1 text-sm text-black/60">{property.neighborhood}</div>
+            <div className="mt-1 text-sm text-[color:var(--muted2)]">{property.neighborhood}</div>
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-black/70">
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-[color:var(--muted)]">
           <span className="u-border2 bg-[var(--bg)] px-3 py-1">
             {property.bedrooms} bd
           </span>

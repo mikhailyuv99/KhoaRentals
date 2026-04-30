@@ -40,7 +40,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
   const inquiry = whatsappUrl(
     propertyInquiryText({
       propertyName: property.name,
-      propertyPath: `/properties/${property.slug}`,
+      propertyPath: `/property/${property.slug}`,
       monthlyUsd: property.pricePerMonthUsd,
     })
   );

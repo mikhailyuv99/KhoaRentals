@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f4efe6;
-  --fg: #151515;
-  --muted: rgba(0, 0, 0, 0.55);
-  --muted2: rgba(0, 0, 0, 0.35);
-  --border: rgba(0, 0, 0, 0.12);
-  --border2: rgba(0, 0, 0, 0.08);
-  --surface: rgba(255, 255, 255, 0.28);
-  --surface2: rgba(255, 255, 255, 0.12);
-  --ink: #0b0b0b;
+  --bg: #0c0c0b;
+  --fg: #f4efe6;
+  --muted: rgba(244, 239, 230, 0.70);
+  --muted2: rgba(244, 239, 230, 0.46);
+  --border: rgba(244, 239, 230, 0.16);
+  --border2: rgba(244, 239, 230, 0.10);
+  --surface: rgba(244, 239, 230, 0.08);
+  --surface2: rgba(244, 239, 230, 0.04);
+  --ink: #f4efe6;
 }
 
 @theme inline {
@@ -21,8 +21,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #f4efe6;
-    --fg: #151515;
+    --bg: #0c0c0b;
+    --fg: #f4efe6;
   }
 }
 

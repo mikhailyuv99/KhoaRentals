@@ -48,12 +48,12 @@ export function HeaderSearch() {
         value={state.q}
         onChange={(e) => setState((p) => ({ ...p, q: e.target.value }))}
         placeholder='Search: "studio", "Son Tra", "2 bedroom", "An Thuong"...'
-        className="h-10 w-full border border-black/15 bg-[var(--background)] px-3 text-sm text-[var(--foreground)] placeholder:text-black/40 outline-none focus:border-black/30"
+        className="h-10 w-full u-border2 bg-[var(--bg)] px-3 text-sm text-[color:var(--fg)] placeholder:text-[color:var(--muted2)] outline-none"
       />
       <select
         value={state.beds}
         onChange={(e) => setState((p) => ({ ...p, beds: e.target.value }))}
-        className="h-10 w-[120px] border border-black/15 bg-[var(--background)] px-2 text-sm text-[var(--foreground)] outline-none focus:border-black/30"
+        className="h-10 w-[120px] u-border2 bg-[var(--bg)] px-2 text-sm text-[color:var(--fg)] outline-none"
         aria-label="Bedrooms"
       >
         <option value="">Beds</option>
@@ -67,18 +67,18 @@ export function HeaderSearch() {
         onChange={(e) => setState((p) => ({ ...p, min: e.target.value }))}
         inputMode="numeric"
         placeholder="Min $/mo"
-        className="h-10 w-[92px] border border-black/15 bg-[var(--background)] px-3 text-sm text-[var(--foreground)] placeholder:text-black/40 outline-none focus:border-black/30"
+        className="h-10 w-[92px] u-border2 bg-[var(--bg)] px-3 text-sm text-[color:var(--fg)] placeholder:text-[color:var(--muted2)] outline-none"
       />
       <input
         value={state.max}
         onChange={(e) => setState((p) => ({ ...p, max: e.target.value }))}
         inputMode="numeric"
         placeholder="Max $/mo"
-        className="h-10 w-[92px] border border-black/15 bg-[var(--background)] px-3 text-sm text-[var(--foreground)] placeholder:text-black/40 outline-none focus:border-black/30"
+        className="h-10 w-[92px] u-border2 bg-[var(--bg)] px-3 text-sm text-[color:var(--fg)] placeholder:text-[color:var(--muted2)] outline-none"
       />
       <button
         type="submit"
-        className="h-10 whitespace-nowrap border border-black bg-black px-4 text-sm font-medium text-[var(--background)] hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+        className="h-10 whitespace-nowrap u-border bg-[var(--ink)] px-4 text-sm font-semibold text-[var(--bg)] hover:bg-[var(--ink)]/92"
       >
         Search
       </button>

@@ -65,30 +65,30 @@ export default async function PropertiesPage({
   });
 
   return (
-    <main className="bg-[var(--background)]">
+    <main className="bg-[var(--bg)]">
       <Container className="py-12 sm:py-16">
         <div className="max-w-2xl">
-          <div className="text-xs font-medium tracking-wide text-black/55">
+          <div className="text-xs font-medium tracking-wide text-[color:var(--muted2)]">
             Properties in Da Nang
           </div>
-          <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
+          <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-4xl">
             Browse rentals
           </h1>
-          <p className="mt-4 text-sm leading-6 text-black/60 sm:text-base">
+          <p className="mt-4 text-sm leading-6 text-[color:var(--muted)] sm:text-base">
             Apartments and houses across budgets — mostly monthly rentals. Listings include
             photos, monthly pricing in VND and USD, address details, and a live map location.
           </p>
         </div>
 
         <Suspense
-          fallback={<div className="mt-8 border border-black/10 bg-[var(--background)] p-4" />}
+          fallback={<div className="mt-8 u-border bg-[var(--surface)] p-4" />}
         >
           <FiltersBar />
         </Suspense>
 
-        <div className="mt-6 text-sm text-black/60">
-          Showing <span className="font-semibold text-[var(--foreground)]">{filtered.length}</span>{" "}
-          of <span className="font-semibold text-[var(--foreground)]">{properties.length}</span>
+        <div className="mt-6 text-sm text-[color:var(--muted)]">
+          Showing <span className="font-semibold text-[color:var(--fg)]">{filtered.length}</span>{" "}
+          of <span className="font-semibold text-[color:var(--fg)]">{properties.length}</span>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
