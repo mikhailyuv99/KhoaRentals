@@ -20,7 +20,7 @@ export default function ListingsPage() {
         </Button>
       </div>
 
-      <div className="mt-12">
+      <div id="results" className="mt-12">
         <Suspense fallback={null}>
           <ListingsExplorer />
         </Suspense>

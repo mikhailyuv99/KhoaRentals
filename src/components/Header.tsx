@@ -45,6 +45,13 @@ export function Header() {
     return () => window.clearTimeout(t);
   }, [router, searchParams, targetPath, value]);
 
+  const scrollToResults = () => {
+    const id = pathname === "/listings" ? "results" : "listings";
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur">
       <Container className="max-w-[1200px]">
@@ -69,6 +76,28 @@ export function Header() {
               <input
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key !== "Enter") return;
+                  e.preventDefault();
+                  const v = value.trim();
+                  const params = new URLSearchParams(searchParams.toString());
+                  if (v) params.set("q", v);
+                  else params.delete("q");
+
+                  const qs = params.toString();
+
+                  if (pathname === "/listings") {
+                    const href = qs ? `/listings?${qs}` : "/listings";
+                    router.push(href, { scroll: false });
+                    window.setTimeout(scrollToResults, 50);
+                    return;
+                  }
+
+                  // Always show results inside the listings section on home.
+                  const href = qs ? `/?${qs}#listings` : "/#listings";
+                  router.push(href, { scroll: false });
+                  window.setTimeout(scrollToResults, 50);
+                }}
                 placeholder="Search listings (studio, 2 bedrooms, My An...)"
                 className="u-motion w-full rounded-full border border-[color:var(--ui3)] bg-white px-10 py-2.5 text-[15px] text-[color:var(--text)] placeholder:text-[color:var(--text2)] focus:border-[color:var(--text)] focus:ring-0"
               />
