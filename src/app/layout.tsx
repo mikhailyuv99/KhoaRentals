@@ -33,7 +33,7 @@ export default function RootLayout({
           <Header />
         </Suspense>
         <SmoothScroll>
-          <main>{children}</main>
+          <main className="min-w-0 flex-1">{children}</main>
         </SmoothScroll>
         <WhatsAppFloatingButton />
         <Footer />

@@ -25,7 +25,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-transparent" />
           </div>
 
-          <Container className="relative max-w-[1440px] px-10">
+          <Container className="relative max-w-[1440px] px-5 sm:px-10">
             <div className="flex min-h-[86vh] flex-col justify-end pb-16 pt-32">
               <div className="max-w-[840px] page-in">
                 {/* Mobile search belongs in hero */}
@@ -55,19 +55,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="listings">
-        <Container className="max-w-[1300px] px-10 pb-[100px] pt-[140px]">
+      <section id="listings" className="min-w-0 max-w-full overflow-x-clip">
+        <Container className="max-w-[1300px] px-5 pb-[100px] pt-20 sm:px-10 sm:pt-[140px]">
           <Reveal>
-            <div className="flex items-end justify-between gap-6">
-              <div>
+            <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+              <div className="min-w-0">
                 <div className="inline-flex rounded-full border border-[color:var(--ui3)] bg-white px-4 py-2 text-[14px] font-medium text-[color:var(--text2)]">
                   Listings
                 </div>
-                <h2 className="font-display mt-6 max-w-[680px] text-[44px] leading-[1.1] tracking-[-0.01em] text-[color:var(--text)] sm:text-[48px]">
+                <h2 className="font-display mt-6 max-w-[680px] break-words text-[36px] leading-[1.1] tracking-[-0.01em] text-[color:var(--text)] sm:text-[44px] md:text-[48px]">
                   Handpicked monthly rentals across Da Nang
                 </h2>
               </div>
-              <Button href="/listings" variant="secondary">
+              <Button href="/listings" variant="secondary" className="h-11 w-full shrink-0 whitespace-nowrap sm:h-11 sm:w-auto">
                 View all
               </Button>
             </div>
@@ -82,7 +82,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-[color:var(--ui3)] bg-[color:var(--ui2)] py-[100px]">
-        <Container className="max-w-[1220px] px-10">
+        <Container className="max-w-[1220px] px-5 sm:px-10">
           <Reveal>
             <div className="grid gap-[42px] lg:grid-cols-12">
             <div className="lg:col-span-5">

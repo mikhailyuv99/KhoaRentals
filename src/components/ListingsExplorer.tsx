@@ -27,12 +27,12 @@ function ListingSummaryCard({
       type="button"
       onClick={onClick}
       className={cn(
-        "u-motion block w-full overflow-hidden rounded-[var(--radius)] border bg-[color:var(--ui2)] text-left hover:shadow-sm",
+        "u-motion block w-full min-w-0 max-w-full overflow-hidden rounded-[var(--radius)] border bg-[color:var(--ui2)] text-left hover:shadow-sm",
         active ? "border-[color:var(--text)] shadow-sm" : "border-[color:var(--ui3)]"
       )}
     >
-      <div className="relative h-[320px] w-full overflow-hidden">
-        <Image src={listing.images[0]} alt={listing.title} fill sizes="(max-width: 1024px) 90vw, 434px" className="object-cover" />
+      <div className="relative h-[220px] w-full min-w-0 overflow-hidden sm:h-[280px] md:h-[320px]">
+        <Image src={listing.images[0]} alt={listing.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 434px" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0" />
         <div className="absolute bottom-4 left-4 right-4">
           <div className="font-display text-[18px] leading-[1.2] text-white">{listing.title}</div>
@@ -103,18 +103,21 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full min-w-0 max-w-full">
       <div
         ref={scrollerRef}
-        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth rounded-[var(--radius)]"
+        className="no-scrollbar flex w-full min-w-0 snap-x snap-mandatory gap-0 overflow-x-auto scroll-smooth rounded-[var(--radius)]"
       >
         {images.map((src, idx) => (
-          <div key={src} className="relative h-[260px] min-w-full snap-center overflow-hidden rounded-[var(--radius)] sm:h-[360px] lg:h-[420px]">
+          <div
+            key={src}
+            className="relative h-[200px] w-full min-w-0 shrink-0 grow-0 basis-full snap-center overflow-hidden rounded-[var(--radius)] sm:h-[300px] md:h-[360px] lg:h-[400px]"
+          >
             <Image
               src={src}
               alt={idx === 0 ? title : `${title} photo ${idx + 1}`}
               fill
-              sizes="(max-width: 1024px) 92vw, 760px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 760px"
               className="object-cover"
               priority={idx === 0}
             />
@@ -158,26 +161,26 @@ function ListingExpanded({ listing }: { listing: Listing }) {
   );
 
   return (
-    <div className="overflow-hidden rounded-[24px] border border-[color:var(--ui3)] bg-white">
-      <div className="flex flex-col gap-3 border-b border-[color:var(--ui3)] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="max-w-full min-w-0 overflow-hidden rounded-[24px] border border-[color:var(--ui3)] bg-white">
+      <div className="flex flex-col gap-3 border-b border-[color:var(--ui3)] px-4 py-3 sm:px-5 sm:py-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <div className="font-display truncate text-[22px] tracking-tight text-[color:var(--text)]">{listing.title}</div>
-          <div className="truncate text-[14px] text-[color:var(--text2)]">
+          <div className="font-display text-[20px] leading-tight tracking-tight text-[color:var(--text)] sm:text-[22px]">{listing.title}</div>
+          <div className="mt-0.5 break-words text-[13px] leading-snug text-[color:var(--text2)] sm:text-[14px]">
             {listing.area} · {listing.address}
           </div>
         </div>
-        <div className="shrink-0">
-          <Button href={inquiryUrl} variant="primary">
+        <div className="shrink-0 sm:self-center">
+          <Button href={inquiryUrl} variant="primary" className="w-full sm:w-auto">
             WhatsApp
           </Button>
         </div>
       </div>
 
-      <div className="grid gap-8 p-5 lg:grid-cols-12">
-        <div className="lg:col-span-7">
+      <div className="grid min-w-0 gap-5 p-4 sm:gap-8 sm:p-5 lg:grid-cols-12">
+        <div className="min-w-0 lg:col-span-7">
           <Carousel images={listing.images} title={listing.title} />
         </div>
-        <div className="lg:col-span-5">
+        <div className="min-w-0 lg:col-span-5">
           <GoogleMapEmbed
             lat={listing.location.lat}
             lng={listing.location.lng}
@@ -186,49 +189,51 @@ function ListingExpanded({ listing }: { listing: Listing }) {
           />
         </div>
 
-        <div className="lg:col-span-12">
-          <div className="rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] p-5">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-              <div>
-                <div className="font-display text-[34px] leading-[1.1] tracking-tight text-[color:var(--text)]">
+        <div className="min-w-0 lg:col-span-12">
+          <div className="rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)] p-4 sm:p-5">
+            <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div className="min-w-0">
+                <div className="font-display text-[28px] leading-[1.1] tracking-tight text-[color:var(--text)] sm:text-[34px]">
                   {formatUsdCompact(listing.monthlyUsd)}
-                  <span className="ml-2 text-[14px] font-normal text-[color:var(--text2)]">/ month</span>
+                  <span className="ml-2 text-[13px] font-normal text-[color:var(--text2)] sm:text-[14px]">/ month</span>
                 </div>
-                <div className="mt-1 text-[15px] text-[color:var(--text2)]">{formatVndCompact(listing.monthlyVnd)} / month</div>
+                <div className="mt-1 text-[14px] text-[color:var(--text2)] sm:text-[15px]">{formatVndCompact(listing.monthlyVnd)} / month</div>
               </div>
               <div className="shrink-0">
-                <Button href={inquiryUrl} variant="primary">
+                <Button href={inquiryUrl} variant="primary" className="w-full whitespace-normal sm:w-auto sm:whitespace-nowrap">
                   Contact on WhatsApp
                 </Button>
               </div>
             </div>
 
-            <div className="mt-6 text-[16px] leading-[1.7] text-[color:var(--text2)]">{listing.about}</div>
+            <div className="mt-5 break-words text-[15px] leading-[1.65] text-[color:var(--text2)] sm:mt-6 sm:text-[16px] sm:leading-[1.7]">
+              {listing.about}
+            </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-4 text-[15px] text-[color:var(--text2)] sm:grid-cols-3 lg:grid-cols-6">
-              <div>
-                <div className="text-[13px]">Beds</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.beds === 0 ? "Studio" : listing.beds}</div>
+            <div className="mt-5 grid min-w-0 grid-cols-2 gap-x-3 gap-y-3 text-[14px] text-[color:var(--text2)] sm:mt-6 sm:grid-cols-3 sm:gap-4 sm:text-[15px] lg:grid-cols-6">
+              <div className="min-w-0">
+                <div className="text-[12px] sm:text-[13px]">Beds</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.beds === 0 ? "Studio" : listing.beds}</div>
               </div>
-              <div>
-                <div className="text-[13px]">Baths</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.baths}</div>
+              <div className="min-w-0">
+                <div className="text-[12px] sm:text-[13px]">Baths</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.baths}</div>
               </div>
-              <div>
-                <div className="text-[13px]">Size</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.sizeM2} m²</div>
+              <div className="min-w-0">
+                <div className="text-[12px] sm:text-[13px]">Size</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.sizeM2} m²</div>
               </div>
-              <div>
-                <div className="text-[13px]">Area</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.area}</div>
+              <div className="min-w-0">
+                <div className="text-[12px] sm:text-[13px]">Area</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.area}</div>
               </div>
-              <div>
-                <div className="text-[13px]">Status</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.availability}</div>
+              <div className="min-w-0">
+                <div className="text-[12px] sm:text-[13px]">Status</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.availability}</div>
               </div>
-              <div>
-                <div className="text-[13px]">Address</div>
-                <div className="mt-1 font-medium text-[color:var(--text)]">{listing.address}</div>
+              <div className="min-w-0 sm:col-span-2 lg:col-span-1">
+                <div className="text-[12px] sm:text-[13px]">Address</div>
+                <div className="mt-1 break-words font-medium text-[color:var(--text)]">{listing.address}</div>
               </div>
             </div>
           </div>
@@ -289,8 +294,8 @@ export function ListingsExplorer({
   const isMobile = cols === 1;
 
   return (
-    <div className={className}>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className={cn("min-w-0 max-w-full", className)}>
+      <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {items.flatMap((l, idx) => {
           const nodes: React.ReactNode[] = [
             <ListingSummaryCard
@@ -303,8 +308,8 @@ export function ListingsExplorer({
 
           if (selected && idx === insertAfterIndex) {
             nodes.push(
-              <div key={`${l.slug}__expanded`} className="col-span-full">
-                <div ref={expandedWrapRef} className="pt-6">
+              <div key={`${l.slug}__expanded`} className="col-span-full min-w-0 max-w-full">
+                <div ref={expandedWrapRef} className="pt-4 sm:pt-6">
                   {isMobile ? (
                     <ListingExpanded listing={selected} />
                   ) : (
