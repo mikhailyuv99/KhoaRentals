@@ -10,12 +10,13 @@ type Props = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-semibold tracking-tight transition select-none disabled:opacity-50 disabled:pointer-events-none";
+  "u-motion u-press inline-flex items-center justify-center gap-2 font-semibold tracking-tight select-none disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<NonNullable<Props["variant"]>, string> = {
   primary:
-    "u-border bg-[color:var(--fg)] text-[color:var(--bg)] hover:bg-[color:var(--fg)]/92 shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
-  secondary: "u-border bg-[color:var(--surface)] text-[color:var(--fg)] hover:bg-[color:var(--surface2)]",
+    "u-border bg-[color:var(--fg)] text-[color:var(--bg)] hover:bg-[color:var(--fg)]/92 shadow-[0_12px_40px_rgba(0,0,0,0.35)] hover:shadow-[0_18px_60px_rgba(0,0,0,0.42)]",
+  secondary:
+    "u-border bg-[color:var(--surface)] text-[color:var(--fg)] hover:bg-[color:var(--surface2)] hover:border-[color:var(--border)]",
   ghost:
     "border border-transparent bg-transparent text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:bg-[color:var(--surface2)]",
 };

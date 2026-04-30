@@ -11,6 +11,11 @@
   --surface: rgba(245, 241, 234, 0.06);
   --surface2: rgba(245, 241, 234, 0.03);
   --accent: #caa86a;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --dur-1: 150ms;
+  --dur-2: 220ms;
+  --dur-3: 320ms;
 }
 
 @theme inline {
@@ -93,6 +98,19 @@ a {
 
   .u-surface2 {
     background: var(--surface2);
+  }
+
+  .u-motion {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow, filter;
+    transition-duration: var(--dur-2);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .u-press {
+    transform: translateZ(0);
+  }
+  .u-press:active {
+    transform: scale(0.98);
   }
 }
 

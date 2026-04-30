@@ -11,7 +11,7 @@ export function PropertyCard({ p, className }: { p: Property; className?: string
     <Link
       href={`/property/${p.slug}`}
       className={cn(
-        "group block u-border bg-[color:var(--surface)] hover:bg-[color:var(--surface2)] transition",
+        "u-motion u-press group block u-border bg-[color:var(--surface)] hover:bg-[color:var(--surface2)] hover:border-[color:var(--border)]",
         className
       )}
     >
@@ -21,7 +21,7 @@ export function PropertyCard({ p, className }: { p: Property; className?: string
           alt={p.images[0]?.alt || p.name}
           fill
           sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
-          className="object-cover transition duration-500 group-hover:scale-[1.02]"
+          className="object-cover transition duration-700 group-hover:scale-[1.035]"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="absolute left-3 top-3 u-border bg-black/35 px-2 py-1 text-[11px] font-semibold tracking-wide text-[color:var(--fg)]">

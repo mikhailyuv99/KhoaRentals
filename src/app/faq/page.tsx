@@ -2,6 +2,7 @@ import { Container } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/Button";
 import { whatsappSendUrl } from "@/content/contact";
+import { AccordionItem } from "@/components/Accordion";
 
 const faqs = [
   {
@@ -38,10 +39,9 @@ export default function FAQPage() {
       <div className="mt-8 grid gap-5">
         {faqs.map((f, idx) => (
           <Reveal key={f.q} delayMs={idx * 60}>
-            <div className="u-border bg-[color:var(--surface)] p-5 sm:p-6">
-              <div className="font-display text-xl">{f.q}</div>
-              <div className="mt-3 text-sm leading-relaxed text-[color:var(--muted)]">{f.a}</div>
-            </div>
+            <AccordionItem title={f.q} defaultOpen={idx === 0}>
+              {f.a}
+            </AccordionItem>
           </Reveal>
         ))}
       </div>
