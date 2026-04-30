@@ -8,6 +8,7 @@ export type Property = {
   sizeSqm?: number;
   pricePerMonthUsd: number;
   pricePerMonthVnd?: number;
+  shortStayOk?: boolean;
   addressLine: string;
   map: { lat: number; lng: number };
   description: string;
@@ -48,10 +49,11 @@ export const properties: Property[] = [
     bathrooms: 1,
     sizeSqm: 42,
     pricePerMonthUsd: 950,
+    shortStayOk: true,
     addressLine: "Steps from My Khe Beach, Đà Nẵng",
     map: { lat: 16.0595, lng: 108.2467 },
     description:
-      "A bright, efficient studio made for easy monthly living. Beach walks, cafés, and gyms nearby.",
+      "A bright, efficient studio built for monthly living—quiet sleep setup, strong Wi‑Fi, and an easy beach routine.",
     highlights: ["Beach walkable", "Strong Wi‑Fi", "Quiet sleep setup"],
     amenities: ["Air conditioning", "Kitchenette", "Elevator", "Desk area", "Washer access"],
     images: [
@@ -81,7 +83,7 @@ export const properties: Property[] = [
     addressLine: "Central Hai Châu, Đà Nẵng",
     map: { lat: 16.0471, lng: 108.2062 },
     description:
-      "A practical 2BR in the center—comfortable for couples, families, or remote work routines.",
+      "Comfortable 2BR in the center—balanced layout for couples, small families, or a dedicated work room.",
     highlights: ["Central location", "Two bathrooms", "Comfortable work setup"],
     amenities: ["Full kitchen", "Washer", "Keyless entry", "Fast Wi‑Fi"],
     images: [

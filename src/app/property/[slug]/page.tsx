@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
-import { properties, formatUsd, formatVnd, toVndFromUsd, mapsDirectionsUrl, mapsEmbedUrl } from "@/content/properties";
+import { properties, formatUsd, formatVnd, mapsDirectionsUrl, mapsEmbedUrl, toVndFromUsd } from "@/content/properties";
 import { Button } from "@/components/Button";
 import { PropertyImageStrip } from "@/components/PropertyImageStrip";
 import { propertyInquiryText, whatsappSendUrl } from "@/content/contact";
@@ -24,7 +24,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
           ← Back to properties
         </Link>
         <Button href={inquiry} variant="primary" size="sm">
-          Check availability on WhatsApp
+          WhatsApp availability
         </Button>
       </div>
 
@@ -67,6 +67,9 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                   WhatsApp inquiry
                 </Button>
               </div>
+              {p.shortStayOk ? (
+                <div className="mt-3 text-xs text-[color:var(--muted2)]">Short stays may be possible. Ask for dates.</div>
+              ) : null}
             </div>
 
             <div className="mt-5 u-border bg-[color:var(--surface)] p-5 sm:p-6">

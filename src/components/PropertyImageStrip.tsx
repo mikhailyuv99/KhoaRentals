@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 export function PropertyImageStrip({
@@ -25,16 +26,20 @@ export function PropertyImageStrip({
 
   return (
     <div className={cn("relative u-border bg-[color:var(--surface)]", className)}>
-      <div
-        ref={ref}
-        className="flex snap-x snap-mandatory gap-3 overflow-x-auto p-3 [scrollbar-width:thin]"
-      >
+      <div ref={ref} className="flex snap-x snap-mandatory gap-3 overflow-x-auto p-3 [scrollbar-width:thin]">
         {images.map((img, i) => (
           <div
             key={`${img.src}-${i}`}
             className="relative h-[240px] min-w-[78%] snap-start overflow-hidden sm:h-[340px] sm:min-w-[60%] lg:h-[420px] lg:min-w-[46%]"
           >
-            <img src={img.src} alt={img.alt} className="h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 520px"
+              priority={i === 0}
+              className="object-cover"
+            />
           </div>
         ))}
       </div>

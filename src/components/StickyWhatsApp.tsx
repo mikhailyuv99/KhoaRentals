@@ -1,6 +1,6 @@
 "use client";
 
-import { WHATSAPP_PHONE_E164, whatsappSendUrl } from "@/content/contact";
+import { whatsappSendUrl, WHATSAPP_PHONE_E164 } from "@/content/contact";
 
 export function StickyWhatsApp() {
   const href = whatsappSendUrl("Hi Khoa Rentals — I’d like to check availability.");

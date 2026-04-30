@@ -18,8 +18,8 @@ export function propertyInquiryText(args: {
   monthlyUsd: number;
 }) {
   const url = siteUrl(args.propertyPath);
-  return `Hi Khoa Rentals — is this available for a monthly rental?\n\nProperty: ${args.propertyName}\nLink: ${url}\nBudget: around $${Math.round(
+  return `Hi Khoa Rentals — is this available?\n\nProperty: ${args.propertyName}\nLink: ${url}\nBudget: around $${Math.round(
     args.monthlyUsd
-  )}/month\n\nWe’d like to schedule a visit if possible.`;
+  )}/month\n\nWe’d like to schedule a viewing if possible.`;
 }
 

@@ -1,6 +1,7 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Property, formatUsd, formatVnd, toVndFromUsd } from "@/content/properties";
 import { cn } from "@/lib/cn";
-import Link from "next/link";
 
 export function PropertyCard({ p, className }: { p: Property; className?: string }) {
   const vnd = p.pricePerMonthVnd ?? toVndFromUsd(p.pricePerMonthUsd);
@@ -15,11 +16,12 @@ export function PropertyCard({ p, className }: { p: Property; className?: string
       )}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={p.images[0]?.src}
+        <Image
+          src={p.images[0]?.src || "data:image/gif;base64,R0lGODlhAQABAAAAACw="}
           alt={p.images[0]?.alt || p.name}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-          loading="lazy"
+          fill
+          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
+          className="object-cover transition duration-500 group-hover:scale-[1.02]"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <div className="absolute left-3 top-3 u-border bg-black/35 px-2 py-1 text-[11px] font-semibold tracking-wide text-[color:var(--fg)]">
@@ -39,7 +41,9 @@ export function PropertyCard({ p, className }: { p: Property; className?: string
             <div className="text-xs text-[color:var(--muted2)]">{formatVnd(vnd)}</div>
           </div>
         </div>
-        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[color:var(--muted)]">{p.description}</p>
+        <p className="mt-3 max-h-[3.4em] overflow-hidden text-sm leading-relaxed text-[color:var(--muted)]">
+          {p.description}
+        </p>
       </div>
     </Link>
   );

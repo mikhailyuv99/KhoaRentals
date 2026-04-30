@@ -1,20 +1,23 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
 import { properties } from "@/content/properties";
 import { PropertyCard } from "@/components/PropertyCard";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-[color:var(--border2)]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1501459522532-9f67219c8a9b?auto=format&fit=crop&w=2600&q=80"
             alt="Da Nang skyline"
-            className="h-full w-full object-cover opacity-55"
-            loading="eager"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-55"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-[color:var(--bg)]" />
         </div>
@@ -30,15 +33,15 @@ export default function HomePage() {
                 <span className="block text-[color:var(--muted)]">Curated rentals across all budgets.</span>
               </h1>
               <p className="mt-5 text-sm leading-relaxed text-[color:var(--muted)] sm:text-base">
-                Browse apartments, studios, houses, and villas. Transparent monthly pricing in USD and VND, interactive
-                maps, and instant WhatsApp inquiries.
+                Apartments, houses, and villas. Transparent monthly pricing in USD and VND, interactive maps, and fast
+                WhatsApp response.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button href="/properties" variant="primary" size="lg">
-                  Browse properties
+                  View properties
                 </Button>
-                <Link href="/properties" className="text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)]">
-                  Search & filters →
+                <Link href="/areas" className="text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)]">
+                  Explore areas →
                 </Link>
               </div>
             </div>
@@ -51,13 +54,15 @@ export default function HomePage() {
           <div className="flex items-end justify-between gap-6">
             <Reveal>
               <div>
-                <h2 className="font-display text-2xl">Available rentals</h2>
-                <p className="mt-2 text-sm text-[color:var(--muted)]">A small set of sample listings. Replace with real inventory.</p>
+                <h2 className="font-display text-2xl">Featured listings</h2>
+                <p className="mt-2 text-sm text-[color:var(--muted)]">
+                  Sample inventory for now. We can connect Google Sheets / a CMS next.
+                </p>
               </div>
             </Reveal>
             <Reveal delayMs={80}>
               <Button href="/properties" variant="secondary">
-                View all
+                Browse all
               </Button>
             </Reveal>
           </div>
@@ -74,4 +79,3 @@ export default function HomePage() {
     </>
   );
 }
-

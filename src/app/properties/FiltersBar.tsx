@@ -7,6 +7,7 @@ export type FiltersValue = {
   q: string;
   beds: "any" | "studio" | "1" | "2" | "3plus";
   maxUsd: "any" | "800" | "1200" | "1800" | "2500";
+  shortStay: "any" | "ok";
 };
 
 export function FiltersBar({
@@ -47,6 +48,14 @@ export function FiltersBar({
     []
   );
 
+  const stayOptions = useMemo(
+    () => [
+      { id: "any", label: "Stay: Any" },
+      { id: "ok", label: "Short stay possible" },
+    ],
+    []
+  );
+
   function patch(next: Partial<FiltersValue>) {
     const v = { ...value, ...next };
     setValue(v);
@@ -63,7 +72,7 @@ export function FiltersBar({
           className={inputCls}
         />
       </div>
-      <div className="md:col-span-3">
+      <div className="md:col-span-2">
         <select value={value.beds} onChange={(e) => patch({ beds: e.target.value as FiltersValue["beds"] })} className={selectCls}>
           {bedsOptions.map((o) => (
             <option key={o.id} value={o.id}>
@@ -72,13 +81,26 @@ export function FiltersBar({
           ))}
         </select>
       </div>
-      <div className="md:col-span-3">
+      <div className="md:col-span-2">
         <select
           value={value.maxUsd}
           onChange={(e) => patch({ maxUsd: e.target.value as FiltersValue["maxUsd"] })}
           className={selectCls}
         >
           {priceOptions.map((o) => (
+            <option key={o.id} value={o.id}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="md:col-span-2">
+        <select
+          value={value.shortStay}
+          onChange={(e) => patch({ shortStay: e.target.value as FiltersValue["shortStay"] })}
+          className={selectCls}
+        >
+          {stayOptions.map((o) => (
             <option key={o.id} value={o.id}>
               {o.label}
             </option>

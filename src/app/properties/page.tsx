@@ -40,11 +40,20 @@ function matchesMaxUsd(p: (typeof properties)[number], maxUsd: FiltersValue["max
 }
 
 export default function PropertiesPage() {
-  const [filters, setFilters] = useState<FiltersValue>({ q: "", beds: "any", maxUsd: "any" });
+  const [filters, setFilters] = useState<FiltersValue>({
+    q: "",
+    beds: "any",
+    maxUsd: "any",
+    shortStay: "any",
+  });
 
   const filtered = useMemo(() => {
     return properties.filter(
-      (p) => matches(p, filters.q) && matchesBeds(p, filters.beds) && matchesMaxUsd(p, filters.maxUsd)
+      (p) =>
+        matches(p, filters.q) &&
+        matchesBeds(p, filters.beds) &&
+        matchesMaxUsd(p, filters.maxUsd) &&
+        (filters.shortStay === "any" ? true : Boolean(p.shortStayOk))
     );
   }, [filters]);
 
@@ -56,7 +65,7 @@ export default function PropertiesPage() {
             <div className="text-xs font-semibold tracking-[0.26em] text-[color:var(--muted2)]">PROPERTIES</div>
             <h1 className="mt-3 font-display text-3xl">Browse rentals</h1>
             <p className="mt-2 text-sm text-[color:var(--muted)]">
-              Search by neighborhood, studio/bedrooms, and monthly budget.
+              Search by neighborhood, beds, monthly budget, and short-stay availability.
             </p>
           </div>
           <div className="text-xs text-[color:var(--muted2)]">{filtered.length} results</div>
