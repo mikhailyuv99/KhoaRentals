@@ -26,9 +26,9 @@ export const listings: Listing[] = [
     about:
       "Bright studio with full kitchen, elevator building, weekly cleaning, and a short walk to cafes and the beach.",
     images: [
-      "https://framerusercontent.com/images/j2QYWllgUp5uE041LD3o4xPMUIM.png",
-      "https://framerusercontent.com/images/K3nhTCEPHAqCEAUh14X6j0DdczQ.jpg",
-      "https://framerusercontent.com/images/ijNsvMrB01PYB3U2c5Bbp6AmzY.png",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 380,
     monthlyVnd: 9500000,
@@ -47,9 +47,9 @@ export const listings: Listing[] = [
     about:
       "Comfortable 1-bedroom with balcony, strong Wi‑Fi, gym access, and easy beach access. Great for monthly stays.",
     images: [
-      "https://framerusercontent.com/images/6XIqzXeMR6YgzkiQNI8aNpNt9Yo.png",
-      "https://framerusercontent.com/images/QsK0Wa19ixHsubAp0p5S0t5S5w.png",
-      "https://framerusercontent.com/images/ZUgAXt4WbSwkvj6EyPHhKxg5vMo.png",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 650,
     monthlyVnd: 16500000,
@@ -68,9 +68,9 @@ export const listings: Listing[] = [
     about:
       "Spacious 2-bedroom close to Han Market and the river. Quiet building, easy parking, and modern kitchen.",
     images: [
-      "https://framerusercontent.com/images/rDUuK6TPTafFezTpUu0H4njdJ8.png",
-      "https://framerusercontent.com/images/f1BoyBAUb7v56qlSKfmD52BmChY.png",
-      "https://framerusercontent.com/images/oEE6UImbMYP4sS2e6InJtPHDaS0.png",
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 750,
     monthlyVnd: 19000000,
@@ -89,9 +89,9 @@ export const listings: Listing[] = [
     about:
       "Family-friendly 3-bedroom house with lots of natural light, nearby parks, and quick access to both beach and city center.",
     images: [
-      "https://framerusercontent.com/images/5rbBnU4EZudjdrSDJqFkv0L6wk.png",
-      "https://framerusercontent.com/images/qjwAvYEozr6t1IMJuJKUOjVhk0g.png",
-      "https://framerusercontent.com/images/aBNdRRfoCs4n1jaQM51t1jvvCNE.png",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 900,
     monthlyVnd: 23000000,
@@ -110,9 +110,9 @@ export const listings: Listing[] = [
     about:
       "Popular 2-bedroom with river view and walkable access to cafes. Currently rented—ask for similar options.",
     images: [
-      "https://framerusercontent.com/images/h47Rv2shExyEhkfIVA3PIrL5bY.png",
-      "https://framerusercontent.com/images/MS80W0sxz4jGITNqDTXdRZDT40k.png",
-      "https://framerusercontent.com/images/Yx0i61oZSbtRM8MWusQDx81Wvw.png",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 820,
     monthlyVnd: 21000000,
@@ -131,9 +131,9 @@ export const listings: Listing[] = [
     about:
       "Private villa with courtyard space, modern furnishings, and room for longer stays. Great for families and groups.",
     images: [
-      "https://framerusercontent.com/images/wAdSPQGdzEABwWjwwWOqCZX5pQ.png",
-      "https://framerusercontent.com/images/r5SLvXiUOw1r08u56p0rDtBoxU.png",
-      "https://framerusercontent.com/images/1nqhq5KhaD6OCufbGLQNTjR0Q9M.png",
+      "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=1800&q=80",
     ],
     monthlyUsd: 1600,
     monthlyVnd: 41000000,

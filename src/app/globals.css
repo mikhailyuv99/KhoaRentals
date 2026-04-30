@@ -40,6 +40,13 @@ html {
 
 /* keep background clean like template (no texture layers) */
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
 *:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(120, 175, 207, 0.35);
