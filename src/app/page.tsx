@@ -10,7 +10,7 @@ import { MobileHeroSearch } from "@/components/MobileHeroSearch";
 export default function Home() {
   return (
     <>
-      <section id="hero" className="relative overflow-hidden">
+      <section id="hero" className="relative overflow-hidden bg-white">
         <div className="relative">
           <div className="absolute inset-0">
             <Image
@@ -22,12 +22,18 @@ export default function Home() {
               quality={100}
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-white" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-transparent" />
           </div>
 
           <Container className="relative max-w-[1440px] px-10">
             <div className="flex min-h-[86vh] flex-col justify-end pb-16 pt-32">
               <div className="max-w-[840px] page-in">
+                {/* Mobile search belongs in hero */}
+                <div className="mb-6 max-w-[520px]">
+                  <Suspense fallback={null}>
+                    <MobileHeroSearch />
+                  </Suspense>
+                </div>
                 <h1 className="font-display text-[56px] leading-[1.05] tracking-[-0.02em] text-white sm:text-[68px] md:text-[76px]">
                   Discover the perfect place to call home in{" "}
                   <span>Da Nang</span>
@@ -35,11 +41,6 @@ export default function Home() {
                 <p className="mt-5 max-w-[560px] text-[18px] leading-[1.6] text-white/85">
                   Your trusted rental agent for monthly homes in Da Nang, offering curated places across budgets.
                 </p>
-                <div className="mt-6 max-w-[520px]">
-                  <Suspense fallback={null}>
-                    <MobileHeroSearch />
-                  </Suspense>
-                </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <Button href="#listings" variant="primary">
                     Browse listings

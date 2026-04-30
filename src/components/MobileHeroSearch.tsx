@@ -61,7 +61,7 @@ export function MobileHeroSearch() {
             apply(true);
           }}
           placeholder="Search: studio, 2 bedrooms, Son Tra..."
-          className="u-motion w-full rounded-full border border-white/20 bg-black/20 px-10 py-3 text-[15px] text-white placeholder:text-white/65 backdrop-blur focus:border-white/40"
+          className="u-motion w-full rounded-full border border-white/20 bg-black/20 px-10 py-3 text-[15px] text-white placeholder:text-white/65 backdrop-blur focus:border-white/40 focus:outline-none focus-visible:shadow-none"
         />
         {value ? (
           <button

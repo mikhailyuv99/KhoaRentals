@@ -286,6 +286,7 @@ export function ListingsExplorer({
   const selectedIndex = selectedSlug ? items.findIndex((l) => l.slug === selectedSlug) : -1;
   const insertAfterIndex =
     selectedIndex >= 0 ? Math.min(items.length - 1, Math.floor(selectedIndex / cols) * cols + (cols - 1)) : -1;
+  const isMobile = cols === 1;
 
   return (
     <div className={className}>
@@ -304,16 +305,20 @@ export function ListingsExplorer({
             nodes.push(
               <div key={`${l.slug}__expanded`} className="col-span-full">
                 <div ref={expandedWrapRef} className="pt-6">
-                  <div
-                    className={cn(
-                      "grid transition-[grid-template-rows] duration-400 [transition-timing-function:var(--ease-out)]",
-                      selected ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                    )}
-                  >
-                    <div className="overflow-hidden">
-                      <ListingExpanded listing={selected} />
+                  {isMobile ? (
+                    <ListingExpanded listing={selected} />
+                  ) : (
+                    <div
+                      className={cn(
+                        "grid transition-[grid-template-rows] duration-400 [transition-timing-function:var(--ease-out)]",
+                        selected ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      )}
+                    >
+                      <div className="overflow-hidden">
+                        <ListingExpanded listing={selected} />
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             );
