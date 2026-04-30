@@ -13,11 +13,12 @@ export default function Home() {
         <div className="relative">
           <div className="absolute inset-0">
             <Image
-              src="/images/da-nang-hero.png"
-              alt="Da Nang coastline"
+              src="/images/da-nang-hero-night.png"
+              alt="Da Nang skyline at night"
               fill
               priority
               sizes="100vw"
+              quality={100}
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-white" />
