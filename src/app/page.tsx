@@ -10,8 +10,8 @@ export default function Home() {
     <main>
       <section className="relative overflow-hidden bg-[var(--background)] min-h-[70vh]">
         <HeroBackdrop
-          src="https://images.unsplash.com/photo-1540979388789-6cee28cbb9bd?auto=format&fit=crop&w=2600&q=80"
-          alt="Da Nang city skyline and sea"
+          src="/hero-da-nang.png"
+          alt="Da Nang city skyline"
         />
 
         <Container className="relative py-16 sm:py-20 lg:py-28">
