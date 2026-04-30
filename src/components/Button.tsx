@@ -14,7 +14,7 @@ const base =
 
 const variants: Record<NonNullable<Props["variant"]>, string> = {
   primary:
-    "rounded-full bg-[color:var(--accent)] text-white hover:brightness-[0.97] shadow-[0_12px_28px_rgba(120,175,207,0.35)]",
+    "group rounded-full bg-[color:var(--accent)] text-white shadow-[0_12px_28px_rgba(120,175,207,0.35)] hover:brightness-[0.97]",
   secondary:
     "rounded-full u-border bg-white text-[color:var(--text)] hover:bg-[color:var(--ui2)]",
   ghost:
@@ -44,6 +44,8 @@ export function Button({
       href.startsWith("mailto:") ||
       href.startsWith("tel:");
 
+    const content = variant === "primary" ? <PrimaryContent>{children}</PrimaryContent> : children;
+
     if (isExternal) {
       const isHttp = href.startsWith("http://") || href.startsWith("https://");
       return (
@@ -52,22 +54,47 @@ export function Button({
           className={cls}
           {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
-          {children}
+          {content}
         </a>
       );
     }
 
     return (
       <Link href={href} className={cls}>
-        {children}
+        {content}
       </Link>
     );
   }
 
   return (
     <button className={cls} {...rest}>
-      {children}
+      {variant === "primary" ? <PrimaryContent>{children}</PrimaryContent> : children}
     </button>
+  );
+}
+
+function PrimaryContent({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <span>{children}</span>
+      <span className="relative -mr-1 inline-flex h-5 w-5 overflow-hidden">
+        <span className="u-motion absolute inset-0 translate-x-0 opacity-100 group-hover:translate-x-6 group-hover:opacity-0">
+          <Arrow />
+        </span>
+        <span className="u-motion absolute inset-0 -translate-x-6 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+          <Arrow />
+        </span>
+      </span>
+    </>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M5 12h12" />
+      <path d="M13 6l6 6-6 6" />
+    </svg>
   );
 }
 

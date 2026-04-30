@@ -18,22 +18,31 @@ export function AccordionItem({
   const panelId = useId();
 
   return (
-    <div className={cn("u-border bg-[color:var(--surface)]", className)}>
+    <div
+      className={cn(
+        "overflow-hidden rounded-[var(--radius)] border border-[color:var(--ui3)] bg-[color:var(--ui2)]",
+        className
+      )}
+    >
       <button
         type="button"
-        className="u-motion flex w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[color:var(--surface2)]"
+        className="u-motion flex w-full items-center justify-between gap-6 p-4 text-left hover:bg-white"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="font-display text-lg">{title}</span>
-        <span
-          className={cn(
-            "u-motion h-6 w-6 shrink-0 border border-[color:var(--border)] text-[color:var(--muted)]",
-            open ? "rotate-45" : "rotate-0"
-          )}
-          aria-hidden
-        />
+        <span className="text-[18px] font-medium leading-[1.2] text-[color:var(--text)]">{title}</span>
+        <span className="u-motion shrink-0 rounded-full bg-[color:var(--ui3)] p-2 text-[color:var(--text)]" aria-hidden>
+          <svg
+            viewBox="0 0 24 24"
+            className={cn("u-motion h-5 w-5", open ? "rotate-180" : "rotate-0")}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
       </button>
 
       <div
@@ -44,7 +53,7 @@ export function AccordionItem({
         )}
       >
         <div className="overflow-hidden">
-          <div className="px-5 pb-5 text-sm leading-relaxed text-[color:var(--muted)]">{children}</div>
+          <div className="px-4 pb-4 text-[17px] leading-[1.4] text-[color:var(--text2)]">{children}</div>
         </div>
       </div>
     </div>
