@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { whatsappUrl } from "@/content/contact";
+import { whatsappSendUrl } from "@/content/contact";
 
 export default function ContactPage() {
-  redirect(whatsappUrl("Hi KHOA Rentals — I’d like to check availability."));
+  redirect(whatsappSendUrl("Hi Khoa Rentals — I’d like to ask about monthly rentals in Da Nang."));
 }
 

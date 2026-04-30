@@ -1,86 +1,77 @@
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { PropertyCard } from "@/components/PropertyCard";
-import { properties } from "@/content/properties";
-import { HeroBackdrop } from "@/app/HeroBackdrop";
 import { Reveal } from "@/components/Reveal";
+import { properties } from "@/content/properties";
+import { PropertyCard } from "@/components/PropertyCard";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
-      <section className="relative overflow-hidden bg-[var(--bg)] min-h-[78dvh]">
-        <HeroBackdrop
-          src="/hero-da-nang.png"
-          alt="Da Nang city skyline"
-        />
+    <>
+      <section className="relative overflow-hidden border-b border-[color:var(--border2)]">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1501459522532-9f67219c8a9b?auto=format&fit=crop&w=2600&q=80"
+            alt="Da Nang skyline"
+            className="h-full w-full object-cover opacity-55"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-[color:var(--bg)]" />
+        </div>
 
-        <Container className="relative py-16 sm:py-20 lg:py-28">
+        <Container className="relative py-20 sm:py-28">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 u-border bg-[var(--surface)] px-4 py-2 text-xs text-[color:var(--muted)] backdrop-blur">
-                Apartments & houses across budgets • Monthly rentals • Visits available
+              <div className="text-xs font-semibold tracking-[0.26em] text-[color:var(--muted2)]">
+                DA NANG • MONTHLY RENTALS
               </div>
-
-              <h1 className="font-display mt-7 text-4xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-5xl">
-                Find a place in Da Nang —{" "}
-                <span className="text-[color:var(--muted)]">and move in with confidence.</span>
+              <h1 className="mt-4 font-display text-4xl leading-[1.02] sm:text-5xl">
+                Find your place in Da Nang.
+                <span className="block text-[color:var(--muted)]">Curated rentals across all budgets.</span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-7 text-[color:var(--muted)] sm:text-lg sm:leading-8">
-                Browse verified listings with monthly pricing in VND and USD, photo galleries, and
-                map locations. Book a visit and check availability in minutes.
+              <p className="mt-5 text-sm leading-relaxed text-[color:var(--muted)] sm:text-base">
+                Browse apartments, studios, houses, and villas. Transparent monthly pricing in USD and VND, interactive
+                maps, and instant WhatsApp inquiries.
               </p>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button href="/properties" size="lg" variant="primary">
-                  Browse listings
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Button href="/properties" variant="primary" size="lg">
+                  Browse properties
                 </Button>
-                <Button href="/contact" size="lg" variant="secondary">
-                  Request options
-                </Button>
+                <Link href="/properties" className="text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)]">
+                  Search & filters →
+                </Link>
               </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      <section className="bg-[var(--bg)] py-14 sm:py-16">
-        <Container>
-          <Reveal>
-            <div className="flex items-end justify-between gap-6">
-            <div>
-              <div className="text-xs font-medium tracking-wide text-[color:var(--muted2)]">
-                Properties
+      <section>
+        <Container className="py-14 sm:py-16">
+          <div className="flex items-end justify-between gap-6">
+            <Reveal>
+              <div>
+                <h2 className="font-display text-2xl">Available rentals</h2>
+                <p className="mt-2 text-sm text-[color:var(--muted)]">A small set of sample listings. Replace with real inventory.</p>
               </div>
-              <h2 className="font-display mt-2 text-2xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-3xl">
-                Browse all listings
-              </h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-[color:var(--muted)] sm:text-base">
-                Monthly pricing in VND and USD, photos, and map locations — tap a listing to view details.
-              </p>
-            </div>
-            <div className="hidden sm:block">
-              <Button href="/properties" variant="secondary" size="sm">
+            </Reveal>
+            <Reveal delayMs={80}>
+              <Button href="/properties" variant="secondary">
                 View all
               </Button>
-            </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {properties.map((p) => (
-              <Reveal key={p.slug} delayMs={60}>
-                <PropertyCard property={p} />
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {properties.map((p, idx) => (
+              <Reveal key={p.slug} delayMs={idx * 70}>
+                <PropertyCard p={p} />
               </Reveal>
             ))}
           </div>
-
-          <div className="mt-10 sm:hidden">
-            <Button href="/properties" variant="secondary" size="md" className="w-full">
-              View all properties
-            </Button>
-          </div>
         </Container>
       </section>
-    </main>
+    </>
   );
 }
+

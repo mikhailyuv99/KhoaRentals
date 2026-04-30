@@ -14,10 +14,10 @@ const base =
 
 const variants: Record<NonNullable<Props["variant"]>, string> = {
   primary:
-    "u-border bg-[var(--ink)] text-[var(--bg)] hover:bg-[var(--ink)]/92 shadow-[0_10px_30px_rgba(0,0,0,0.14)]",
-  secondary:
-    "u-border bg-transparent text-[var(--fg)] hover:bg-black/[0.04]",
-  ghost: "border border-transparent bg-transparent text-[var(--fg)] hover:bg-black/[0.04]",
+    "u-border bg-[color:var(--fg)] text-[color:var(--bg)] hover:bg-[color:var(--fg)]/92 shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
+  secondary: "u-border bg-[color:var(--surface)] text-[color:var(--fg)] hover:bg-[color:var(--surface2)]",
+  ghost:
+    "border border-transparent bg-transparent text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:bg-[color:var(--surface2)]",
 };
 
 const sizes: Record<NonNullable<Props["size"]>, string> = {

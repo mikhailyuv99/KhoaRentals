@@ -1,103 +1,82 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { Container } from "@/components/Container";
 import { PropertyCard } from "@/components/PropertyCard";
 import { properties } from "@/content/properties";
-import { FiltersBar } from "@/app/properties/FiltersBar";
-import { Suspense } from "react";
+import { FiltersBar, FiltersValue } from "@/app/properties/FiltersBar";
+import { Reveal } from "@/components/Reveal";
 
-export const metadata = {
-  title: "Properties — KHOA Rentals",
-  description: "Browse all available rentals across Da Nang.",
-};
-
-function toInt(value: string | undefined | null) {
-  if (!value) return undefined;
-  const n = Number.parseInt(value, 10);
-  return Number.isFinite(n) ? n : undefined;
+function matches(p: (typeof properties)[number], q: string) {
+  const s = q.trim().toLowerCase();
+  if (!s) return true;
+  const hay = [
+    p.name,
+    p.neighborhood,
+    p.type,
+    p.addressLine,
+    p.description,
+    p.highlights.join(" "),
+    p.amenities.join(" "),
+    `${p.bedrooms} bedroom`,
+    `${p.bedrooms}br`,
+    p.bedrooms === 0 ? "studio" : "",
+  ]
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(s);
 }
 
-function matchesQuery(q: string, haystack: string) {
-  const parts = q
-    .toLowerCase()
-    .split(/\s+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-  return parts.every((p) => haystack.includes(p));
+function matchesBeds(p: (typeof properties)[number], beds: FiltersValue["beds"]) {
+  if (beds === "any") return true;
+  if (beds === "studio") return p.bedrooms === 0;
+  if (beds === "3plus") return p.bedrooms >= 3;
+  return p.bedrooms === Number(beds);
 }
 
-export default async function PropertiesPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ q?: string; beds?: string; min?: string; max?: string }>;
-}) {
-  const sp = (await searchParams) ?? {};
+function matchesMaxUsd(p: (typeof properties)[number], maxUsd: FiltersValue["maxUsd"]) {
+  if (maxUsd === "any") return true;
+  return p.pricePerMonthUsd <= Number(maxUsd);
+}
 
-  const q = sp.q?.trim() ?? "";
-  const beds = toInt(sp.beds);
-  const min = toInt(sp.min);
-  const max = toInt(sp.max);
+export default function PropertiesPage() {
+  const [filters, setFilters] = useState<FiltersValue>({ q: "", beds: "any", maxUsd: "any" });
 
-  const filtered = properties.filter((p) => {
-    const haystack = [
-      p.name,
-      p.neighborhood,
-      p.type,
-      p.addressLine,
-      p.description,
-      p.highlights.join(" "),
-      p.amenities.join(" "),
-      `${p.bedrooms} bedroom`,
-      `${p.bedrooms} bed`,
-      p.bedrooms === 0 ? "studio" : "",
-    ]
-      .join(" ")
-      .toLowerCase();
-    if (q && !matchesQuery(q, haystack)) return false;
-    if (typeof beds === "number") {
-      if (beds === 3) {
-        if (p.bedrooms < 3) return false;
-      } else if (p.bedrooms !== beds) {
-        return false;
-      }
-    }
-    if (typeof min === "number" && p.pricePerMonthUsd < min) return false;
-    if (typeof max === "number" && p.pricePerMonthUsd > max) return false;
-    return true;
-  });
+  const filtered = useMemo(() => {
+    return properties.filter(
+      (p) => matches(p, filters.q) && matchesBeds(p, filters.beds) && matchesMaxUsd(p, filters.maxUsd)
+    );
+  }, [filters]);
 
   return (
-    <main className="bg-[var(--bg)]">
-      <Container className="py-12 sm:py-16">
-        <div className="max-w-2xl">
-          <div className="text-xs font-medium tracking-wide text-[color:var(--muted2)]">
-            Properties in Da Nang
+    <Container className="py-10 sm:py-14">
+      <Reveal>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <div className="text-xs font-semibold tracking-[0.26em] text-[color:var(--muted2)]">PROPERTIES</div>
+            <h1 className="mt-3 font-display text-3xl">Browse rentals</h1>
+            <p className="mt-2 text-sm text-[color:var(--muted)]">
+              Search by neighborhood, studio/bedrooms, and monthly budget.
+            </p>
           </div>
-          <h1 className="font-display mt-2 text-3xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-4xl">
-            Browse rentals
-          </h1>
-          <p className="mt-4 text-sm leading-6 text-[color:var(--muted)] sm:text-base">
-            Apartments and houses across budgets — mostly monthly rentals. Listings include
-            photos, monthly pricing in VND and USD, address details, and a live map location.
-          </p>
+          <div className="text-xs text-[color:var(--muted2)]">{filtered.length} results</div>
         </div>
+      </Reveal>
 
-        <Suspense
-          fallback={<div className="mt-8 u-border bg-[var(--surface)] p-4" />}
-        >
-          <FiltersBar />
-        </Suspense>
-
-        <div className="mt-6 text-sm text-[color:var(--muted)]">
-          Showing <span className="font-semibold text-[color:var(--fg)]">{filtered.length}</span>{" "}
-          of <span className="font-semibold text-[color:var(--fg)]">{properties.length}</span>
+      <Reveal delayMs={90}>
+        <div className="mt-7 u-border bg-[color:var(--surface)] p-4 sm:p-5">
+          <FiltersBar initialValue={filters} onChange={setFilters} />
         </div>
+      </Reveal>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <PropertyCard key={p.slug} property={p} />
-          ))}
-        </div>
-      </Container>
-    </main>
+      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((p, idx) => (
+          <Reveal key={p.slug} delayMs={idx * 50}>
+            <PropertyCard p={p} />
+          </Reveal>
+        ))}
+      </div>
+    </Container>
   );
 }
 

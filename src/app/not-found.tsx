@@ -1,29 +1,26 @@
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 
 export default function NotFound() {
   return (
-    <main className="bg-[var(--background)]">
-      <Container className="py-20">
-        <div className="mx-auto max-w-xl border border-black/10 bg-[var(--background)] p-10 text-center">
-          <div className="text-xs font-medium tracking-wide text-black/55">404</div>
-          <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)]">
-            Page not found
-          </h1>
-          <p className="mt-3 text-sm leading-6 text-black/60">
-            The page you’re looking for doesn’t exist. Browse the portfolio or return home.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href="/" variant="primary" size="md">
-              Home
-            </Button>
-            <Button href="/properties" variant="secondary" size="md">
-              Properties
-            </Button>
-          </div>
+    <Container className="py-24">
+      <div className="max-w-xl">
+        <div className="text-xs font-semibold tracking-[0.24em] text-[color:var(--muted2)]">404</div>
+        <h1 className="mt-3 font-display text-3xl text-[color:var(--fg)]">Page not found</h1>
+        <p className="mt-4 text-sm leading-relaxed text-[color:var(--muted)]">
+          The page you’re looking for doesn’t exist. Browse current listings instead.
+        </p>
+        <div className="mt-8 flex items-center gap-3">
+          <Button href="/properties" variant="primary">
+            View properties
+          </Button>
+          <Link href="/" className="text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)]">
+            Back home
+          </Link>
         </div>
-      </Container>
-    </main>
+      </div>
+    </Container>
   );
 }
 

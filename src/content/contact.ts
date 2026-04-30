@@ -1,17 +1,15 @@
 export const WHATSAPP_PHONE_E164 = "84793875777";
-export const WHATSAPP_DISPLAY = "+84 79 387 5777";
-
-export function whatsappUrl(text?: string) {
-  const base = `https://wa.me/${WHATSAPP_PHONE_E164}`;
-  if (!text) return base;
-  return `${base}?text=${encodeURIComponent(text)}`;
-}
 
 export function siteUrl(pathname: string) {
   const base =
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") || "https://khoarentals.com";
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   return `${base}${path}`;
+}
+
+export function whatsappSendUrl(text: string) {
+  const t = encodeURIComponent(text);
+  return `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE_E164}&text=${t}`;
 }
 
 export function propertyInquiryText(args: {

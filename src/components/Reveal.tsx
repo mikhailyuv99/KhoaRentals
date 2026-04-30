@@ -27,7 +27,7 @@ export function Reveal({
         if (entry.isIntersecting) setShown(true);
         else if (repeat) setShown(false);
       },
-      { threshold: 0.15 }
+      { threshold: 0.18 }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -36,11 +36,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={cn(
-        "will-change-transform",
-        shown ? "animate-reveal" : "opacity-0 translate-y-2",
-        className
-      )}
+      className={cn("will-change-transform", shown ? "animate-reveal" : "opacity-0 translate-y-2", className)}
       style={{ animationDelay: `${delayMs}ms` }}
     >
       {children}

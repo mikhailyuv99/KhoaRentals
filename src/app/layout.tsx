@@ -2,35 +2,21 @@ import { Fraunces, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
+import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 
-const display = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-});
+const display = Fraunces({ variable: "--font-display", subsets: ["latin"] });
+const body = Newsreader({ variable: "--font-body", subsets: ["latin"] });
 
-const body = Newsreader({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${display.variable} ${body.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-[var(--bg)] text-[var(--fg)]">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
         <Header />
-        <div className="flex-1">{children}</div>
+        <main>{children}</main>
         <Footer />
-        <WhatsAppFloatingButton />
+        <StickyWhatsApp />
       </body>
     </html>
   );
 }
+

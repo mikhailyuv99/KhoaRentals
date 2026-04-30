@@ -1,61 +1,45 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Property, formatUsd, formatVnd, toVndFromUsd } from "@/content/properties";
 import { cn } from "@/lib/cn";
+import Link from "next/link";
 
-export function PropertyCard({ property }: { property: Property }) {
-  const cover = property.images[0];
-  const vnd = property.pricePerMonthVnd ?? toVndFromUsd(property.pricePerMonthUsd);
+export function PropertyCard({ p, className }: { p: Property; className?: string }) {
+  const vnd = p.pricePerMonthVnd ?? toVndFromUsd(p.pricePerMonthUsd);
+  const bedsLabel = p.bedrooms === 0 ? "Studio" : `${p.bedrooms}BR`;
 
   return (
     <Link
-      href={`/property/${property.slug}`}
+      href={`/property/${p.slug}`}
       className={cn(
-        "group overflow-hidden u-border bg-[var(--surface2)] backdrop-blur transition",
-        "hover:bg-[var(--surface)]"
+        "group block u-border bg-[color:var(--surface)] hover:bg-[color:var(--surface2)] transition",
+        className
       )}
     >
-      <div className="relative aspect-[16/11] w-full overflow-hidden">
-        <Image
-          src={cover.src}
-          alt={cover.alt}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition duration-700 group-hover:scale-[1.03]"
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
+          src={p.images[0]?.src}
+          alt={p.images[0]?.alt || p.name}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+          loading="lazy"
         />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/75 to-transparent" />
-        <div className="absolute left-4 bottom-4 right-4">
-          <div className="flex items-center justify-between gap-3">
-            <div className="text-sm font-semibold text-white">{property.type}</div>
-            <div className="text-right text-sm text-white">
-              <div className="font-medium">{formatVnd(vnd)}</div>
-              <div className="text-white/75">{formatUsd(property.pricePerMonthUsd)} / month</div>
-            </div>
-          </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <div className="absolute left-3 top-3 u-border bg-black/35 px-2 py-1 text-[11px] font-semibold tracking-wide text-[color:var(--fg)]">
+          {bedsLabel} • {p.type}
+        </div>
+        <div className="absolute bottom-3 left-3 right-3">
+          <div className="font-display text-lg leading-tight text-white">{p.name}</div>
+          <div className="mt-1 text-xs text-white/80">{p.neighborhood}</div>
         </div>
       </div>
 
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="text-base font-semibold tracking-tight text-[var(--fg)]">
-              {property.name}
-            </div>
-            <div className="mt-1 text-sm text-[color:var(--muted2)]">{property.neighborhood}</div>
+      <div className="p-4">
+        <div className="flex items-end justify-between gap-4">
+          <div className="text-xs text-[color:var(--muted2)]">Monthly</div>
+          <div className="text-right">
+            <div className="text-sm font-semibold text-[color:var(--fg)]">{formatUsd(p.pricePerMonthUsd)}</div>
+            <div className="text-xs text-[color:var(--muted2)]">{formatVnd(vnd)}</div>
           </div>
         </div>
-
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-[color:var(--muted)]">
-          <span className="u-border2 bg-[var(--bg)] px-3 py-1">
-            {property.bedrooms} bd
-          </span>
-          <span className="u-border2 bg-[var(--bg)] px-3 py-1">
-            {property.bathrooms} ba
-          </span>
-          <span className="u-border2 bg-[var(--bg)] px-3 py-1">
-            {property.guests} guests
-          </span>
-        </div>
+        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[color:var(--muted)]">{p.description}</p>
       </div>
     </Link>
   );
