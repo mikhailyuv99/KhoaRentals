@@ -199,7 +199,7 @@ export function LandingView() {
             Find Your <em className="not-italic text-[color:var(--luxe-gold)]">Perfect</em> Home in Da Nang
           </h1>
           <p className="mb-12 animate-[luxeFadeUp_1s_ease_0.9s_both] text-base font-light text-white/70 md:text-[1.1rem]">
-            Affordable apartments and houses for foreigners. English-speaking support, verified listings from $200/month.
+            Affordable apartments and houses for foreigners. No agent fees, English-speaking support, verified listings from $200/month.
           </p>
           <button
             type="button"
