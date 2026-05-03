@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Realest template tokens (light) */
+  /* Realest template tokens (light) — kept for legacy pages */
   --bg: #ffffff; /* UI 1 */
   --ui2: #f8f8f8; /* UI 2 */
   --ui3: #ebebeb; /* UI 3 */
@@ -9,6 +9,14 @@
   --text2: #333333; /* Secondary Text */
   --accent: #78afcf; /* Accent Color */
   --radius: 18px;
+
+  /* Luxe landing (Cormorant + Montserrat site) */
+  --luxe-gold: #c8a96e;
+  --luxe-gold-light: #d4bc8b;
+  --luxe-dark: #1a1a1a;
+  --luxe-darker: #0d0d0d;
+  --luxe-light: #f5f0eb;
+  --luxe-white: #ffffff;
 
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
@@ -25,8 +33,8 @@
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--luxe-darker);
+  color: var(--luxe-light);
   font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   opacity: 0;
   transition: opacity 600ms var(--ease-out);
@@ -37,7 +45,7 @@ html[data-loaded="true"] body {
 }
 
 ::selection {
-  background: rgba(120, 175, 207, 0.35);
+  background: rgba(200, 169, 110, 0.35);
 }
 
 html {
@@ -55,7 +63,7 @@ html {
 
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(120, 175, 207, 0.35);
+  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.45);
 }
 
 a {
@@ -137,6 +145,46 @@ a {
 
 .page-in {
   animation: page-in 650ms var(--ease-out) both;
+}
+
+@keyframes luxeFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luxeHeroZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes luxeScrollLine {
+  0%,
+  100% {
+    height: 50px;
+    opacity: 0.3;
+  }
+  50% {
+    height: 80px;
+    opacity: 1;
+  }
+}
+
+.luxe-hero-bg {
+  animation: luxeHeroZoom 20s infinite alternate;
+}
+
+.luxe-scroll-line {
+  animation: luxeScrollLine 2s ease infinite;
 }
 
 @keyframes ticker-left {

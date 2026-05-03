@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
-import { Suspense } from "react";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { BrandedLoader } from "@/components/BrandedLoader";
 
-const inter = Inter({ variable: "--font-body", subsets: ["latin"] });
-const playfair = Playfair_Display({ variable: "--font-display", subsets: ["latin"] });
+const montserrat = Montserrat({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
-  title: "Khoa Rentals — Monthly Rentals in Da Nang",
+  title: "Khoa Rentals | Da Nang Monthly Rentals for Foreigners",
   description:
-    "Monthly apartments, houses, and villas across Da Nang. Browse photos, pricing in USD and VND, interactive maps, and inquire on WhatsApp.",
+    "Da Nang monthly rentals for foreigners — studios, apartments, and houses. Search by area, browse photos, maps, and message Khoa on WhatsApp.",
 };
 
 export default function RootLayout({
@@ -23,20 +30,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${montserrat.variable} ${cormorant.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col">
         <BrandedLoader />
-        <Suspense fallback={null}>
-          <Header />
-        </Suspense>
         <SmoothScroll>
           <main className="min-w-0 flex-1">{children}</main>
         </SmoothScroll>
         <WhatsAppFloatingButton />
-        <Footer />
       </body>
     </html>
   );

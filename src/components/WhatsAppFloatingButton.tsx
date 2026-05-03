@@ -8,7 +8,7 @@ export function WhatsAppFloatingButton() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="u-motion fixed bottom-6 right-6 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full border border-[color:var(--ui3)] bg-white shadow-sm hover:shadow-md"
+      className="u-motion fixed bottom-6 right-6 z-[60] inline-flex h-14 w-14 items-center justify-center rounded-full border border-[color:var(--luxe-gold)]/40 bg-[color:var(--luxe-dark)] shadow-lg hover:border-[color:var(--luxe-gold)] hover:shadow-xl"
     >
       {/* From `whatsapp-color-svgrepo-com (1).svg` */}
       <svg viewBox="0 0 48 48" className="h-7 w-7" aria-hidden="true">

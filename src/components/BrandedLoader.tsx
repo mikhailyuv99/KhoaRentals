@@ -29,18 +29,20 @@ export function BrandedLoader() {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed inset-0 z-[80] grid place-items-center bg-white transition-opacity duration-500 [transition-timing-function:var(--ease-out)]",
+        "pointer-events-none fixed inset-0 z-[80] grid place-items-center bg-[color:var(--luxe-darker)] transition-opacity duration-500 [transition-timing-function:var(--ease-out)]",
         done ? "opacity-0" : "opacity-100"
       )}
       aria-hidden={done}
     >
       <div className="pointer-events-none text-center">
-        <div className="font-display text-[26px] tracking-tight text-[color:var(--text)]">Khoa Rentals</div>
-        <div className="mt-2 text-[14px] text-[color:var(--text2)]">Monthly rentals in Da Nang</div>
+        <div className="font-display text-[26px] tracking-[3px] text-white">
+          Khoa<span className="text-[color:var(--luxe-gold)]">.</span>Rentals
+        </div>
+        <div className="mt-2 text-[14px] text-white/60">Monthly rentals in Da Nang</div>
         <div className="mt-6 flex items-center justify-center gap-2">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--accent)]" />
-          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--accent)] [animation-delay:120ms]" />
-          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--accent)] [animation-delay:240ms]" />
+          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--luxe-gold)]" />
+          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--luxe-gold)] [animation-delay:120ms]" />
+          <span className="h-2 w-2 animate-pulse rounded-full bg-[color:var(--luxe-gold)] [animation-delay:240ms]" />
         </div>
       </div>
     </div>
